@@ -1,3 +1,6 @@
+# macOS
+.DS_Store
+
 # Logs
 logs
 *.log
@@ -36,11 +39,14 @@ bower_components
 .lock-wscript
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
+build/
 build/Release
 
 # Dependency directories
 node_modules/
 jspm_packages/
+packages/*/node_modules/
+packages/*/*/node_modules/
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
@@ -134,3 +140,40 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Expo
+.expo/
+.expo-shared/
+expo-env.d.ts
+web-build/
+dist/
+
+# Metro
+.metro-health-check*
+
+# React Native CLI
+react-native-debug.log
+
+# Temporary files
+tmp/
+temp/
+cache/
+logs/
+*.tmp
+*.temp
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Local workspace settings
+.vscode/
