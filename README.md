@@ -25,3 +25,48 @@ const styles = StyleSheet.create({
   },
 });
 ```
+
+# Shadows
+
+Shadows in React Native differ between iOS and Android. Here's how to apply them effectively:
+
+## iOS Shadows
+
+To create shadows on iOS, you need to define at least the following properties:
+
+- **`shadowColor`**: Specifies the color of the shadow.
+- **`shadowOffset`**: Determines the shadow's position. It requires an object with `width` and `height` values.
+- **`shadowOpacity`**: Controls the transparency of the shadow.
+- **`shadowRadius`**: Defines the blur radius of the shadow.
+
+Example:
+
+```javascript
+const styles = StyleSheet.create({
+  box: {
+    shadowColor: "grey",
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 1,
+    shadowRadius: 10,
+  },
+});
+```
+
+## Android Shadows
+
+On Android, shadows are controlled using the **`elevation`** property. Unlike iOS, Android does not provide as much control over shadow properties.
+
+Example:
+
+```javascript
+const styles = StyleSheet.create({
+  box: {
+    elevation: 10,
+  },
+});
+```
+
+### Key Differences
+
+- iOS offers more granular control over shadows with multiple properties.
+- Android simplifies shadow implementation but limits customization to the `elevation` property.
