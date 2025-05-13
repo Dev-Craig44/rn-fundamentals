@@ -1,4 +1,6 @@
-import { Text, View } from "react-native";
+import React from "react";
+import { View } from "react-native";
+import AppText from "./components/AppText";
 
 export default function Index() {
   return (
@@ -9,25 +11,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      {/* add text component */}
-      <Text
-        style={{
-          fontSize: 30,
-          // courier is not supposted on android and Roboto isn't support on ios
-          // fontFamily: "Roboto",
-          // fontFamily: "Courier",
-          fontStyle: "italic",
-          fontWeight: "600",
-          color: "tomato",
-          textTransform: "capitalize",
-          // textDecorationLine: "line-through",
-          textAlign: "justify",
-          // this determines the space between lines
-          lineHeight: 30,
-        }}
-      >
-        I love React Native! This is my first React Native app!
-      </Text>
+      <AppText>I love React Native!</AppText>
     </View>
   );
 }

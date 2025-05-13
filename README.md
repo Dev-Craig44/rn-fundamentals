@@ -89,3 +89,43 @@ When working with text styling in React Native, here are some key points to keep
 - **No Style Inheritance**: Unlike CSS in web development, React Native does not support style inheritance. This means that styles applied to a parent component do not automatically propagate to child components. Each component must explicitly define its own styles.
 
 These principles will help you avoid common pitfalls and ensure your text styling behaves as expected.
+
+## ✨ Encapsulating Styles
+
+> **How can we make sure our text looks consistent across different screens?**
+
+We solve this by **encapsulating styles** inside reusable components. Instead of repeating styles on every `Text` element, we create a custom wrapper component.
+
+---
+
+### 💡 VS Code Shortcuts (Abbreviations)
+
+- `rsf` → create a React functional component
+- `imrn` → import React Native components
+- `rns` → generate a React Native `StyleSheet`
+
+---
+
+### ✅ AppText Component
+
+We wrap React Native’s `Text` component to create a reusable `AppText` that automatically applies consistent styling across all screens.
+
+```tsx
+// AppText.tsx
+// rsf + imrn + rns combo
+import React from "react";
+import { Platform, StyleSheet, Text } from "react-native";
+
+function AppText(props) {
+  return <Text style={styles.text}>{props.children}</Text>;
+}
+
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 18,
+    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
+  },
+});
+
+export default AppText;
+```
