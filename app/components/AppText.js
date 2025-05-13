@@ -1,22 +1,28 @@
-// Use "rsf" to quickly create a functional component
 import React from "react";
 import { Platform, StyleSheet, Text } from "react-native";
-// Use "imrn" to import React Native components
-// Example usage: <AppText>My Text</AppText>
+
 function AppText(props) {
-  // To use this AppText component like a standard Text component,
-  // you should be able to pass content between its tags.
-  // To achieve this, we render a special property of the props object called "children".
-  // Alternatively, you can destructure { children } from the props object.
   return <Text style={styles.text}>{props.children}</Text>;
 }
 
-// Type "rns" to generate a React Native stylesheet
+// this method takes an object.
+// this object can take optional key-value pairs
+// this object return one of these objects dpanding on the current platform
+
 const styles = StyleSheet.create({
+  // now we can spread that object from { select } to copy thos properties into this object over here
   text: {
-    fontSize: 18,
-    // Use the Platform API to detect the current platform
-    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
+    color: "tomato",
+    ...Platform.select({
+      ios: {
+        fontSize: 20,
+        fontFamily: "Avenir",
+      },
+      android: {
+        fontSize: 18,
+        fontFamily: "Roboto",
+      },
+    }),
   },
 });
 

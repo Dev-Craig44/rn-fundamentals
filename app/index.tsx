@@ -1,6 +1,6 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import { View } from "react-native";
+import AppText from "./components/AppText";
 
 export default function Index() {
   return (
@@ -11,8 +11,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      {/* add icon here using expo icon */}
-      <MaterialCommunityIcons name="email" size={200} color={"dodgerblue"} />
+      <AppText>I love React Native</AppText>
     </View>
   );
 }

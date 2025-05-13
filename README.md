@@ -160,3 +160,50 @@ function IconExample() {
 - **Ease of Integration**: Simple and intuitive API for seamless usage in your React Native project.
 
 For more information, refer to the [Expo Icons Guide](https://expo.github.io/vector-icons/).
+
+# Platform-specific Code
+
+The `AppText` approach we used earlier works well for dynamically setting one or two properties. However, as the number of platform-specific customizations increases, the code can become harder to maintain.
+
+For example:
+
+```javascript
+fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
+fontSize: Platform.OS === "android" ? 18 : 20,
+```
+
+To address this, we can use the `Platform.select()` method for cleaner and more maintainable code.
+
+### Using `Platform.select()`
+
+The `Platform.select()` method allows us to define platform-specific styles in a more organized way:
+
+```javascript
+const styles = StyleSheet.create({
+  text: {
+    ...Platform.select({
+      ios: {
+        fontFamily: "Avenir",
+        fontSize: 20,
+      },
+      android: {
+        fontFamily: "Roboto",
+        fontSize: 18,
+      },
+    }),
+  },
+});
+```
+
+### Separate Platform Implementations
+
+For more complex customizations, such as modifying behavior in addition to styles, we can create separate implementations for each platform. React Native allows us to define platform-specific files by appending `.ios.js` or `.android.js` to the file name.
+
+For example, in the `components` folder, we can create:
+
+- `AppText.ios.js` for iOS-specific implementation.
+- `AppText.android.js` for Android-specific implementation.
+
+React Native will automatically pick the appropriate file based on the platform.
+
+This approach keeps the codebase clean and ensures platform-specific logic is encapsulated within dedicated files.
