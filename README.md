@@ -70,3 +70,12 @@ const styles = StyleSheet.create({
 
 - iOS offers more granular control over shadows with multiple properties.
 - Android simplifies shadow implementation but limits customization to the `elevation` property.
+
+# Paddings and Margins
+
+Understanding the difference between padding and margin is crucial for layout design:
+
+- **Padding**: The space between the content of a component and its border. It creates internal spacing within the component.
+- **Margin**: The space outside the component's border. It defines the external spacing between the component and other elements.
+
+Visualizing these concepts can help you design cleaner and more organized layouts.
