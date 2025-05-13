@@ -129,3 +129,34 @@ const styles = StyleSheet.create({
 
 export default AppText;
 ```
+
+## Icons
+
+Icons are essential for enhancing the visual appeal and usability of your app. With Expo, you can access a wide range of scalable and visually appealing icons that look great on any screen size.
+
+### Using Expo Icons
+
+1. Explore the available icons in the [Expo Icons Documentation](https://expo.github.io/vector-icons/).
+2. If you're not using the Expo managed workflow, install the `@expo/vector-icons` package:
+
+```bash
+npm install @expo/vector-icons
+```
+
+> **Note**: If you're using Expo, this package is included by default, so no installation is required. 3. Import and use the desired icon in your components:
+
+```javascript
+import { MaterialIcons } from "@expo/vector-icons";
+
+function IconExample() {
+  return <MaterialIcons name="home" size={24} color="black" />;
+}
+```
+
+### Benefits of Expo Icons
+
+- **Scalability**: Icons automatically adapt to different screen sizes and resolutions.
+- **Extensive Library**: Choose from a vast collection of icon sets, including Material Icons, FontAwesome, and more.
+- **Ease of Integration**: Simple and intuitive API for seamless usage in your React Native project.
+
+For more information, refer to the [Expo Icons Guide](https://expo.github.io/vector-icons/).
