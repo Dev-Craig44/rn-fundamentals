@@ -79,3 +79,13 @@ Understanding the difference between padding and margin is crucial for layout de
 - **Margin**: The space outside the component's border. It defines the external spacing between the component and other elements.
 
 Visualizing these concepts can help you design cleaner and more organized layouts.
+
+# Styling Text
+
+When working with text styling in React Native, here are some key points to keep in mind:
+
+- **Custom Fonts**: To use custom fonts, refer to the [Expo Custom Fonts documentation](https://docs.expo.dev/guides/using-custom-fonts/). Expo provides an easy way to load and use custom fonts in your project.
+- **Invalid Properties**: Be cautious when applying styles. For example, setting `fontSize` on a `View` component is invalid because `fontSize` is not a supported property for `View`. React Native does not throw errors for unsupported style properties, but they will simply have no effect.
+- **No Style Inheritance**: Unlike CSS in web development, React Native does not support style inheritance. This means that styles applied to a parent component do not automatically propagate to child components. Each component must explicitly define its own styles.
+
+These principles will help you avoid common pitfalls and ensure your text styling behaves as expected.
