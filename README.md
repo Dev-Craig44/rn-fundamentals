@@ -276,3 +276,33 @@ The style ensures the button is fully responsive (`width: "100%"`), centered con
 ```tsx
 <AppButton title="Submit" onPress={handleSubmit} />
 ```
+
+## Exercise: Welcome Screen
+
+### Objective
+
+Enhance the welcome screen of your app by applying the styling techniques you've learned.
+
+### Tasks
+
+1. **Replace Button Placeholders**:
+
+- Use the `Button` component to replace the existing button placeholders.
+
+2. **Add Color Support**:
+
+- Extend the `Button` component to support different colors.
+- Example: To make the Register button green, use the following syntax:
+  ```tsx
+  <Button color="secondary" />
+  ```
+
+3. **Adjust Layout**:
+
+- Separate the tagline from the logo to improve visual hierarchy.
+
+4. **Optional Enhancement**:
+
+- Add a blurry background effect by setting the `blurRadius` prop on the `ImageBackground` component.
+
+By completing these tasks, you'll create a more polished and visually appealing welcome screen for your app.

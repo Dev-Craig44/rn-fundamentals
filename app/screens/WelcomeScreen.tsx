@@ -1,21 +1,27 @@
 import React from "react";
 import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
+import LoginButton from "../components/LoginButton";
+import RegisterButton from "../components/RegisterButton";
 
 function WelcomeScreen() {
   return (
     <ImageBackground
       style={styles.background}
       source={require("../assets/images/background.jpg")}
+      blurRadius={10}
     >
       <View style={styles.loginContainer}>
         <Image
           style={styles.logo}
           source={require("../assets/images/logo-red.png")}
         />
-        <Text>Sell What You Dont Need</Text>
+        <Text style={styles.text}>Sell What You Dont Need</Text>
       </View>
-      <View style={styles.loginButton}></View>
-      <View style={styles.registerButton}></View>
+      <LoginButton title={"Login"} onPress={() => console.log("logged in")} />
+      <RegisterButton
+        title={"Register"}
+        onPress={() => console.log("registered")}
+      />
     </ImageBackground>
   );
 }
@@ -26,24 +32,19 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
   },
-  loginButton: {
-    width: "100%",
-    height: 70,
-    backgroundColor: "#fc5c65",
-  },
   logo: {
     width: 100,
     height: 100,
+    marginBottom: 20,
   },
   loginContainer: {
     position: "absolute",
     top: 70,
     alignItems: "center",
   },
-  registerButton: {
-    width: "100%",
-    height: 70,
-    backgroundColor: "#4ecdc4",
+  text: {
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
 
