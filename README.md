@@ -1,17 +1,19 @@
-# rn-fundamentals
+# React Native Fundamentals
 
 A hands-on journey through React Native fundamentals, packed with practical examples, custom scripts, and real-world insights. Build with confidence.
 
-# Styling
+---
 
-# Borders
+## Styling
 
-To summarize the section on borders:
+### Borders
 
-- **Border Width**: Controls the thickness of the border.
-- **Border Color**: Sets the color of the border.
-- **Border Radius**: Rounds the corners of the border.
-- **Border Style**: Defines the style (e.g., solid, dashed, dotted).
+Borders are essential for defining the boundaries of components. Key properties include:
+
+- **`borderWidth`**: Controls the thickness of the border.
+- **`borderColor`**: Sets the border's color.
+- **`borderRadius`**: Rounds the corners of the border.
+- **`borderStyle`**: Defines the style (e.g., solid, dashed, dotted).
 
 Example:
 
@@ -26,17 +28,15 @@ const styles = StyleSheet.create({
 });
 ```
 
-# Shadows
+### Shadows
 
-Shadows in React Native differ between iOS and Android. Here's how to apply them effectively:
+Shadows enhance the visual depth of components. Implementation differs between iOS and Android:
 
-## iOS Shadows
+#### iOS Shadows
 
-To create shadows on iOS, you need to define at least the following properties:
-
-- **`shadowColor`**: Specifies the color of the shadow.
-- **`shadowOffset`**: Determines the shadow's position. It requires an object with `width` and `height` values.
-- **`shadowOpacity`**: Controls the transparency of the shadow.
+- **`shadowColor`**: Specifies the shadow's color.
+- **`shadowOffset`**: Determines the shadow's position (requires `width` and `height` values).
+- **`shadowOpacity`**: Controls the shadow's transparency.
 - **`shadowRadius`**: Defines the blur radius of the shadow.
 
 Example:
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
 });
 ```
 
-## Android Shadows
+#### Android Shadows
 
-On Android, shadows are controlled using the **`elevation`** property. Unlike iOS, Android does not provide as much control over shadow properties.
+On Android, shadows are controlled using the **`elevation`** property.
 
 Example:
 
@@ -66,58 +66,38 @@ const styles = StyleSheet.create({
 });
 ```
 
-### Key Differences
+#### Key Differences
 
-- iOS offers more granular control over shadows with multiple properties.
-- Android simplifies shadow implementation but limits customization to the `elevation` property.
+- iOS offers granular control with multiple shadow properties.
+- Android simplifies shadows with the `elevation` property but limits customization.
 
-# Paddings and Margins
+### Paddings and Margins
 
-Understanding the difference between padding and margin is crucial for layout design:
+- **Padding**: Space between the content and the component's border (internal spacing).
+- **Margin**: Space outside the component's border (external spacing).
 
-- **Padding**: The space between the content of a component and its border. It creates internal spacing within the component.
-- **Margin**: The space outside the component's border. It defines the external spacing between the component and other elements.
+Understanding these concepts is crucial for creating clean, organized layouts.
 
-Visualizing these concepts can help you design cleaner and more organized layouts.
+### Styling Text
 
-# Styling Text
+Text styling in React Native is straightforward but requires attention to detail:
 
-When working with text styling in React Native, here are some key points to keep in mind:
+- **Custom Fonts**: Use [Expo Custom Fonts](https://docs.expo.dev/guides/using-custom-fonts/) for easy font integration.
+- **Invalid Properties**: Avoid applying unsupported styles (e.g., `fontSize` on a `View`).
+- **No Style Inheritance**: Styles do not propagate from parent to child components. Each component must define its own styles.
 
-- **Custom Fonts**: To use custom fonts, refer to the [Expo Custom Fonts documentation](https://docs.expo.dev/guides/using-custom-fonts/). Expo provides an easy way to load and use custom fonts in your project.
-- **Invalid Properties**: Be cautious when applying styles. For example, setting `fontSize` on a `View` component is invalid because `fontSize` is not a supported property for `View`. React Native does not throw errors for unsupported style properties, but they will simply have no effect.
-- **No Style Inheritance**: Unlike CSS in web development, React Native does not support style inheritance. This means that styles applied to a parent component do not automatically propagate to child components. Each component must explicitly define its own styles.
+#### Encapsulating Styles
 
-These principles will help you avoid common pitfalls and ensure your text styling behaves as expected.
+Encapsulate text styles in reusable components for consistency across screens.
 
-## ✨ Encapsulating Styles
-
-> **How can we make sure our text looks consistent across different screens?**
-
-We solve this by **encapsulating styles** inside reusable components. Instead of repeating styles on every `Text` element, we create a custom wrapper component.
-
----
-
-### 💡 VS Code Shortcuts (Abbreviations)
-
-- `rsf` → create a React functional component
-- `imrn` → import React Native components
-- `rns` → generate a React Native `StyleSheet`
-
----
-
-### ✅ AppText Component
-
-We wrap React Native’s `Text` component to create a reusable `AppText` that automatically applies consistent styling across all screens.
+Example: `AppText` Component
 
 ```tsx
-// AppText.tsx
-// rsf + imrn + rns combo
 import React from "react";
 import { Platform, StyleSheet, Text } from "react-native";
 
-function AppText(props) {
-  return <Text style={styles.text}>{props.children}</Text>;
+function AppText({ children }) {
+  return <Text style={styles.text}>{children}</Text>;
 }
 
 const styles = StyleSheet.create({
@@ -130,233 +110,80 @@ const styles = StyleSheet.create({
 export default AppText;
 ```
 
+---
+
 ## Icons
 
-Icons are essential for enhancing the visual appeal and usability of your app. With Expo, you can access a wide range of scalable and visually appealing icons that look great on any screen size.
+Icons enhance your app's visual appeal and usability. With Expo, you can access a wide range of scalable icons.
 
 ### Using Expo Icons
 
-1. Explore the available icons in the [Expo Icons Documentation](https://expo.github.io/vector-icons/).
-2. If you're not using the Expo managed workflow, install the `@expo/vector-icons` package:
+1. Explore the [Expo Icons Documentation](https://expo.github.io/vector-icons/).
+2. Install the `@expo/vector-icons` package (if not using Expo managed workflow):
 
-```bash
-npm install @expo/vector-icons
-```
+   ```bash
+   npm install @expo/vector-icons
+   ```
 
-> **Note**: If you're using Expo, this package is included by default, so no installation is required. 3. Import and use the desired icon in your components:
+3. Import and use icons:
 
-```javascript
-import { MaterialIcons } from "@expo/vector-icons";
+   ```javascript
+   import { MaterialIcons } from "@expo/vector-icons";
 
-function IconExample() {
-  return <MaterialIcons name="home" size={24} color="black" />;
-}
-```
+   function IconExample() {
+     return <MaterialIcons name="home" size={24} color="black" />;
+   }
+   ```
 
-### Benefits of Expo Icons
+---
 
-- **Scalability**: Icons automatically adapt to different screen sizes and resolutions.
-- **Extensive Library**: Choose from a vast collection of icon sets, including Material Icons, FontAwesome, and more.
-- **Ease of Integration**: Simple and intuitive API for seamless usage in your React Native project.
+## Platform-Specific Code
 
-For more information, refer to the [Expo Icons Guide](https://expo.github.io/vector-icons/).
+React Native allows platform-specific customizations using `Platform.select()` or separate files (`.ios.js` and `.android.js`).
 
-# Platform-specific Code
-
-The `AppText` approach we used earlier works well for dynamically setting one or two properties. However, as the number of platform-specific customizations increases, the code can become harder to maintain.
-
-For example:
-
-```javascript
-fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-fontSize: Platform.OS === "android" ? 18 : 20,
-```
-
-To address this, we can use the `Platform.select()` method for cleaner and more maintainable code.
-
-### Using `Platform.select()`
-
-The `Platform.select()` method allows us to define platform-specific styles in a more organized way:
+Example with `Platform.select()`:
 
 ```javascript
 const styles = StyleSheet.create({
   text: {
     ...Platform.select({
-      ios: {
-        fontFamily: "Avenir",
-        fontSize: 20,
-      },
-      android: {
-        fontFamily: "Roboto",
-        fontSize: 18,
-      },
+      ios: { fontFamily: "Avenir", fontSize: 20 },
+      android: { fontFamily: "Roboto", fontSize: 18 },
     }),
   },
 });
 ```
 
-### Separate Platform Implementations
+---
 
-For more complex customizations, such as modifying behavior in addition to styles, we can create separate implementations for each platform. React Native allows us to define platform-specific files by appending `.ios.js` or `.android.js` to the file name.
+## Organizing Styles
 
-For example, in the `components` folder, we can create:
-
-- `AppText.ios.js` for iOS-specific implementation.
-- `AppText.android.js` for Android-specific implementation.
-
-React Native will automatically pick the appropriate file based on the platform.
-
-This approach keeps the codebase clean and ensures platform-specific logic is encapsulated within dedicated files.
-
-# Organizing Styles
-
-One improvement we made in the `AppText.js` file is combining structure and styles in a single file. While this approach works for smaller components, separating styles into their own file can improve maintainability and scalability.
-
-### Refactoring `AppText`
-
-To better organize the `AppText` component:
-
-1. **Promote `AppText.js` into a folder**:
-
-- Create a new folder named `AppText`.
-- Move the `AppText.js` file into this folder.
-
-2. **Create a `styles.js` file**:
-
-- Inside the `AppText` folder, add a new file named `styles.js`.
-- Move all style definitions from `AppText.js` into `styles.js`.
-
-This separation ensures that the component's structure and styles are clearly defined in their respective files, making the codebase easier to navigate and maintain.
-
-## Exercise: Button Component
-
-### Objective
-
-Create a reusable `Button` component with rounded corners that works consistently across both iOS and Android platforms. Test this component in `App.js`.
-
-### Requirements
-
-- **Background Color**: Use the primary color of your app's theme.
-- **Path**: Place the component in the `/components` folder.
-
-### Instructions
-
-1. Design a `Button` component with rounded corners.
-2. Ensure the component adheres to a consistent UI across platforms.
-3. Test the component by importing and using it in `App.js`.
-
-By following these steps, you'll create a polished and reusable button that enhances the visual consistency of your app.
-
-**Note**
-I was wondering why the button wasn't working and it was because the prop on the button said "styles" instead of "style" and there was no error thrown letting my be aware of this
-
-## 🟩 Custom Button Component
-
-### 🧠 Summary
-
-In this exercise, I created a reusable `AppButton` component to centralize button styling and behavior. The button accepts a `title` prop for dynamic labels and an `onPress` callback for event handling. I wrapped the label in a `TouchableOpacity` to support user interaction and used a centralized `colors` config for design consistency.
-
-The style ensures the button is fully responsive (`width: "100%"`), centered content-wise, and visually aligned with the rest of the app's theme. This setup makes it easy to plug the button into any screen with clean, readable props.
-
-### 🔁 What This Solves
-
-- No more repeated button styling
-- One source of truth for interaction and appearance
-- Easy to scale or theme app-wide buttons
-
-### ✍️ Shortcuts Used
-
-- `rsf` → Functional component template
-- `rnss` → React Native stylesheet
-- `imrn` → React Native imports
-- `imp` → Color config import
+For better maintainability, separate styles into their own files. For example, refactor the `AppText` component into a folder with `AppText.js` and `styles.js`.
 
 ---
 
-```tsx
-<AppButton title="Submit" onPress={handleSubmit} />
-```
+## Exercises
 
-## Exercise: Welcome Screen
+### Button Component
 
-### Objective
+Create a reusable `Button` component with rounded corners. Test it in `App.js`.
 
-Enhance the welcome screen of your app by applying the styling techniques you've learned.
+### Welcome Screen
 
-### Tasks
+Enhance the welcome screen by:
 
-1. **Replace Button Placeholders**:
+1. Replacing button placeholders with the `Button` component.
+2. Adding color support to the `Button` component.
+3. Adjusting the layout for better visual hierarchy.
+4. Optionally adding a blurry background effect.
 
-- Use the `Button` component to replace the existing button placeholders.
+### Card Component
 
-2. **Add Color Support**:
-
-- Extend the `Button` component to support different colors.
-- Example: To make the Register button green, use the following syntax:
-  ```tsx
-  <Button color="secondary" />
-  ```
-
-3. **Adjust Layout**:
-
-- Separate the tagline from the logo to improve visual hierarchy.
-
-4. **Optional Enhancement**:
-
-- Add a blurry background effect by setting the `blurRadius` prop on the `ImageBackground` component.
-
-By completing these tasks, you'll create a more polished and visually appealing welcome screen for your app.
-
-## Exercise: Card Component
-
-### Objective
-
-Create a reusable `Card` component to display listings in your app. The component should be versatile and styled to fit seamlessly into your design.
-
-### Requirements
-
-- **Props**:
-
-  - `title`: The main title of the card.
-  - `subTitle`: A subtitle or additional information.
-  - `image`: The image to display (e.g., `require("...")`).
-
-- **Styling**:
-
-  - Background color: `#fff`.
-  - Test the card inside a `View` with a background color of `#f8f4f4`.
-
-- **Image**:
-  - Use `jacket.jpg` for the image. This file is included in the supplementary materials for this lesson.
-
-### Example Usage
-
-```tsx
-<Card
-  title="Beautiful Jacket"
-  subTitle="$100"
-  image={require("../assets/jacket.jpg")}
-/>
-```
-
-### Why the Invalid Call Occurred
-
-The issue at line 9:
-
-```tsx
-<Image source={require(image)} style={styles.image} />
-```
-
-occurs because we are attempting to load an image dynamically. The `require` function in React Native expects a static string at compile time to determine the image or asset to include in the bundle. Since the `image` variable is dynamic, the React Native packager cannot resolve it.
-
-### Solution
-
-To resolve this, move the `require` function to the `App.js` file or wherever the `Card` component is being used. Pass the resolved image as a prop to the `Card` component. This ensures the image is statically resolved before being passed to the `Card`.
+Create a reusable `Card` component with props for `title`, `subTitle`, and `image`. Ensure the image is statically resolved using `require()`.
 
 Example:
 
 ```tsx
-// App.js
 <Card
   title="Beautiful Jacket"
   subTitle="$100"
@@ -364,42 +191,16 @@ Example:
 />
 ```
 
-This approach ensures the `require` function is used correctly and avoids runtime errors.
+### Listing Details Screen
 
-## Exercise: Listing Details Screen
+Design a screen to display listing details, including the title, price, description, and poster information. Use reusable components for consistency.
 
-### Objective
+---
 
-Design a screen to display the details of a listing. This screen will serve as the foundation for future enhancements, such as adding a contact form and integrating a map.
+## UI Toolkits
 
-### Tasks
+For real-world apps, consider using a UI toolkit:
 
-1. **Display Listing Information**:
-
-- Include key details such as the title, price, and description.
-
-2. **Add Visual Appeal**:
-
-- Use an image to represent the listing prominently.
-
-3. **Prepare for Future Enhancements**:
-
-- Structure the layout to accommodate additional features like a contact form and a map.
-
-## Poster Information
-
-To enhance the listing details screen, include information about the person who posted the listing. This can be implemented as a reusable component to maintain consistency and reduce redundancy across the app.
-
-### Key Elements
-
-- **Profile Picture**: Display the poster's image to add a personal touch.
-- **Name**: Show the name of the person who posted the listing.
-- **Additional Details**: Optionally include other relevant information, such as their contact details or a brief description.
-
-### Benefits of Reusability
-
-- **Consistency**: Ensures a uniform design across all screens where poster information is displayed.
-- **Scalability**: Simplifies updates and maintenance by centralizing the component logic.
-- **Enhanced User Experience**: Provides a professional and cohesive look, improving the app's overall usability.
-
-By structuring this component effectively, you can create a polished and user-friendly interface that highlights the poster's details seamlessly.
+- [React Native Elements](https://react-native-elements.github.io/react-native-elements/) (Recommended)
+- [React Native Paper](https://callstack.github.io/react-native-paper/)
+- [Native Base](https://nativebase.io/)
