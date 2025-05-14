@@ -207,3 +207,72 @@ For example, in the `components` folder, we can create:
 React Native will automatically pick the appropriate file based on the platform.
 
 This approach keeps the codebase clean and ensures platform-specific logic is encapsulated within dedicated files.
+
+# Organizing Styles
+
+One improvement we made in the `AppText.js` file is combining structure and styles in a single file. While this approach works for smaller components, separating styles into their own file can improve maintainability and scalability.
+
+### Refactoring `AppText`
+
+To better organize the `AppText` component:
+
+1. **Promote `AppText.js` into a folder**:
+
+- Create a new folder named `AppText`.
+- Move the `AppText.js` file into this folder.
+
+2. **Create a `styles.js` file**:
+
+- Inside the `AppText` folder, add a new file named `styles.js`.
+- Move all style definitions from `AppText.js` into `styles.js`.
+
+This separation ensures that the component's structure and styles are clearly defined in their respective files, making the codebase easier to navigate and maintain.
+
+## Exercise: Button Component
+
+### Objective
+
+Create a reusable `Button` component with rounded corners that works consistently across both iOS and Android platforms. Test this component in `App.js`.
+
+### Requirements
+
+- **Background Color**: Use the primary color of your app's theme.
+- **Path**: Place the component in the `/components` folder.
+
+### Instructions
+
+1. Design a `Button` component with rounded corners.
+2. Ensure the component adheres to a consistent UI across platforms.
+3. Test the component by importing and using it in `App.js`.
+
+By following these steps, you'll create a polished and reusable button that enhances the visual consistency of your app.
+
+**Note**
+I was wondering why the button wasn't working and it was because the prop on the button said "styles" instead of "style" and there was no error thrown letting my be aware of this
+
+## 🟩 Custom Button Component
+
+### 🧠 Summary
+
+In this exercise, I created a reusable `AppButton` component to centralize button styling and behavior. The button accepts a `title` prop for dynamic labels and an `onPress` callback for event handling. I wrapped the label in a `TouchableOpacity` to support user interaction and used a centralized `colors` config for design consistency.
+
+The style ensures the button is fully responsive (`width: "100%"`), centered content-wise, and visually aligned with the rest of the app's theme. This setup makes it easy to plug the button into any screen with clean, readable props.
+
+### 🔁 What This Solves
+
+- No more repeated button styling
+- One source of truth for interaction and appearance
+- Easy to scale or theme app-wide buttons
+
+### ✍️ Shortcuts Used
+
+- `rsf` → Functional component template
+- `rnss` → React Native stylesheet
+- `imrn` → React Native imports
+- `imp` → Color config import
+
+---
+
+```tsx
+<AppButton title="Submit" onPress={handleSubmit} />
+```

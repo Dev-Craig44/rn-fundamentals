@@ -1,17 +1,17 @@
 import React from "react";
-import { View } from "react-native";
-import AppText from "./components/AppText";
+import { StyleSheet, View } from "react-native";
+import ViewImageScreen from "./screens/ViewImageScreen";
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <AppText>I love React Native</AppText>
+    <View style={styles.container}>
+      <ViewImageScreen />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
