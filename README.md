@@ -306,3 +306,62 @@ Enhance the welcome screen of your app by applying the styling techniques you've
 - Add a blurry background effect by setting the `blurRadius` prop on the `ImageBackground` component.
 
 By completing these tasks, you'll create a more polished and visually appealing welcome screen for your app.
+
+## Exercise: Card Component
+
+### Objective
+
+Create a reusable `Card` component to display listings in your app. The component should be versatile and styled to fit seamlessly into your design.
+
+### Requirements
+
+- **Props**:
+
+  - `title`: The main title of the card.
+  - `subTitle`: A subtitle or additional information.
+  - `image`: The image to display (e.g., `require("...")`).
+
+- **Styling**:
+
+  - Background color: `#fff`.
+  - Test the card inside a `View` with a background color of `#f8f4f4`.
+
+- **Image**:
+  - Use `jacket.jpg` for the image. This file is included in the supplementary materials for this lesson.
+
+### Example Usage
+
+```tsx
+<Card
+  title="Beautiful Jacket"
+  subTitle="$100"
+  image={require("../assets/jacket.jpg")}
+/>
+```
+
+### Why the Invalid Call Occurred
+
+The issue at line 9:
+
+```tsx
+<Image source={require(image)} style={styles.image} />
+```
+
+occurs because we are attempting to load an image dynamically. The `require` function in React Native expects a static string at compile time to determine the image or asset to include in the bundle. Since the `image` variable is dynamic, the React Native packager cannot resolve it.
+
+### Solution
+
+To resolve this, move the `require` function to the `App.js` file or wherever the `Card` component is being used. Pass the resolved image as a prop to the `Card` component. This ensures the image is statically resolved before being passed to the `Card`.
+
+Example:
+
+```tsx
+// App.js
+<Card
+  title="Beautiful Jacket"
+  subTitle="$100"
+  image={require("../assets/jacket.jpg")}
+/>
+```
+
+This approach ensures the `require` function is used correctly and avoids runtime errors.
