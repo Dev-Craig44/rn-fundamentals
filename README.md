@@ -385,3 +385,21 @@ Design a screen to display the details of a listing. This screen will serve as t
 3. **Prepare for Future Enhancements**:
 
 - Structure the layout to accommodate additional features like a contact form and a map.
+
+## Poster Information
+
+To enhance the listing details screen, include information about the person who posted the listing. This can be implemented as a reusable component to maintain consistency and reduce redundancy across the app.
+
+### Key Elements
+
+- **Profile Picture**: Display the poster's image to add a personal touch.
+- **Name**: Show the name of the person who posted the listing.
+- **Additional Details**: Optionally include other relevant information, such as their contact details or a brief description.
+
+### Benefits of Reusability
+
+- **Consistency**: Ensures a uniform design across all screens where poster information is displayed.
+- **Scalability**: Simplifies updates and maintenance by centralizing the component logic.
+- **Enhanced User Experience**: Provides a professional and cohesive look, improving the app's overall usability.
+
+By structuring this component effectively, you can create a polished and user-friendly interface that highlights the poster's details seamlessly.
