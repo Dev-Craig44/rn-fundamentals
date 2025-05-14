@@ -365,3 +365,23 @@ Example:
 ```
 
 This approach ensures the `require` function is used correctly and avoids runtime errors.
+
+## Exercise: Listing Details Screen
+
+### Objective
+
+Design a screen to display the details of a listing. This screen will serve as the foundation for future enhancements, such as adding a contact form and integrating a map.
+
+### Tasks
+
+1. **Display Listing Information**:
+
+- Include key details such as the title, price, and description.
+
+2. **Add Visual Appeal**:
+
+- Use an image to represent the listing prominently.
+
+3. **Prepare for Future Enhancements**:
+
+- Structure the layout to accommodate additional features like a contact form and a map.
