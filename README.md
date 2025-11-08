@@ -329,3 +329,11 @@ This project is configured to run with **Expo Go** app:
 - React versions must match exactly (19.1.0) - the `^` symbol can cause auto-upgrades to incompatible versions
 - After updating any native dependencies, clear Metro cache with `npx expo start -c`
 - React Native version (0.81.5) is determined by Expo SDK 54 and cannot be changed when using Expo Go
+
+### FlatList
+
+- A performant interface for rendering basic, flat lists. Supporting most handy features like:
+  - Fully cross-platform
+  - Optional horizontal mode
+  - Configurable viewability callbacks
+  - Header and footer support

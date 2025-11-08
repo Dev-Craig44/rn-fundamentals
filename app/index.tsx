@@ -1,6 +1,6 @@
 import React from "react";
-import ViewImageScreen from "./screens/ViewImageScreen";
+import MessagesScreen from "./screens/MessagesScreen";
 
 export default function Index() {
-  return <ViewImageScreen />;
+  return <MessagesScreen />;
 }
