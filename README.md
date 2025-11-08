@@ -218,3 +218,114 @@ In this section, you'll create:
 - Three new screens
 - Reusable list components
 - Dynamic data rendering patterns
+
+---
+
+## Troubleshooting & Setup Notes
+
+### Dependency Installation Issues
+
+During initial setup, you may encounter React version mismatches and peer dependency conflicts. Here's how to resolve them:
+
+#### React Version Mismatch
+
+**Problem:** Error showing incompatible React versions between `react`, `react-dom`, and `react-native-renderer`.
+
+**Solution:**
+
+```bash
+# 1. Install exact React versions that match React Native 0.81.5
+npm install react@19.1.0 react-dom@19.1.0 --save-exact --legacy-peer-deps
+
+# 2. Install matching test renderer
+npm install --save-dev react-test-renderer@19.1.0 --legacy-peer-deps
+
+# 3. Clean reinstall all dependencies
+rm -rf node_modules package-lock.json
+npm install --legacy-peer-deps
+```
+
+#### Expo SDK Package Updates
+
+**Problem:** Packages not compatible with installed Expo SDK version.
+
+**Solution:**
+
+```bash
+# Update all packages to match Expo SDK
+npx expo install --fix --legacy-peer-deps
+```
+
+#### Watchman Recrawl Warning
+
+**Problem:** Watchman repeatedly recrawling the project directory.
+
+**Solution:**
+
+```bash
+watchman watch-del '/Users/blaze/Dev-Projects/Mosh/ReactNative/DoneWithIt'
+watchman watch-project '/Users/blaze/Dev-Projects/Mosh/ReactNative/DoneWithIt'
+```
+
+#### Starting the Development Server
+
+**Problem:** Need to clear Metro bundler cache after dependency changes.
+
+**Solution:**
+
+```bash
+# Clear cache and start
+npx expo start -c
+
+# Or clear Watchman and Metro caches
+watchman watch-del-all
+npx expo start --reset-cache
+```
+
+### Key Dependencies for Expo SDK 54
+
+- **React:** 19.1.0 (exact version required)
+- **React Native:** 0.81.5 (matches Expo Go native version)
+- **React DOM:** 19.1.0
+- **React Test Renderer:** ^19.1.0
+- **Expo SDK:** ^54.0.23
+
+### Common Commands
+
+```bash
+# Install dependencies with legacy peer deps (recommended)
+npm install --legacy-peer-deps
+
+# Clean install
+rm -rf node_modules package-lock.json
+npm install --legacy-peer-deps
+
+# Start development server with cache clear
+npx expo start -c
+
+# Fix Expo package versions
+npx expo install --fix --legacy-peer-deps
+
+# Clear all caches
+watchman watch-del-all
+rm -rf node_modules
+npm install --legacy-peer-deps
+```
+
+### Using Expo Go
+
+This project is configured to run with **Expo Go** app:
+
+1. Install Expo Go on your iOS/Android device
+2. Run `npx expo start`
+3. Scan the QR code with your device
+4. The app will load in Expo Go
+
+**Note:** Since we're using Expo Go, the native React Native version (0.81.5) is pre-built into the Expo Go app. Your JavaScript dependencies must match this version.
+
+### Important Notes
+
+- Always use `--legacy-peer-deps` flag when installing packages to avoid peer dependency conflicts
+- React versions must match exactly (19.1.0) - the `^` symbol can cause auto-upgrades to incompatible versions
+- After updating any native dependencies, clear Metro cache with `npx expo start -c`
+- React Native version (0.81.5) is determined by Expo SDK 54 and cannot be changed when using Expo Go
