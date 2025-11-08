@@ -330,10 +330,16 @@ This project is configured to run with **Expo Go** app:
 - After updating any native dependencies, clear Metro cache with `npx expo start -c`
 - React Native version (0.81.5) is determined by Expo SDK 54 and cannot be changed when using Expo Go
 
-### FlatList
+## FlatList
 
 - A performant interface for rendering basic, flat lists. Supporting most handy features like:
   - Fully cross-platform
   - Optional horizontal mode
   - Configurable viewability callbacks
   - Header and footer support
+
+## Extracting the Screen Component
+
+### SafeAreaView
+
+This component is now coming from `react-native-safe-area-context` package instead of `react-native`.
