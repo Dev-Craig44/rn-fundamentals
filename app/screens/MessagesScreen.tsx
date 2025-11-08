@@ -1,7 +1,5 @@
-// 1.) Type `rsf` to create a React Functional Component
 import React from "react";
 import { FlatList } from "react-native";
-// 5.) Import the ListItem component.
 import ListItem from "../components/ListItem";
 
 const messages = [
@@ -21,12 +19,9 @@ const messages = [
 
 function MessagesScreen(props: {}) {
   return (
-    // 2.) Render a flatlist.
     <FlatList
       data={messages}
-      // 3.) Provide a unique key for each item.
       keyExtractor={(message) => message.id.toString()}
-      // 4.) Render each item.
       renderItem={({ item }) => (
         <ListItem
           title={item.title}
