@@ -204,3 +204,17 @@ For real-world apps, consider using a UI toolkit:
 - [React Native Elements](https://react-native-elements.github.io/react-native-elements/) (Recommended)
 - [React Native Paper](https://callstack.github.io/react-native-paper/)
 - [Native Base](https://nativebase.io/)
+
+## Lists
+
+### Introduction
+
+Learn how to build lists in React Native.
+
+#### What You'll Build
+
+In this section, you'll create:
+
+- Three new screens
+- Reusable list components
+- Dynamic data rendering patterns
