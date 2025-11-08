@@ -1,8 +1,10 @@
 import React from "react";
 // 2.) Import StyleSheet, Platform, and StatusBar from react-native so we can adjust for the notch on Android devices
-import { FlatList, Platform, StatusBar, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ListItem from "../components/ListItem";
+// 5.) Import Constants from expo-constants to get the status bar height
+import Constants from "expo-constants";
 
 const messages = [
   {
@@ -42,7 +44,8 @@ function MessagesScreen(props: {}) {
 // 3.) Create a styles object to adjust for the notch on Android devices by typing `rnss`
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    // 6.) Add paddingTop using Constants.statusBarHeight to adjust for the notch on Android devices
+    paddingTop: Constants.statusBarHeight,
   },
 });
 
