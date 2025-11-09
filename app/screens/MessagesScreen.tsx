@@ -1,10 +1,10 @@
 import React from "react";
 // 2.) Import StyleSheet, Platform, and StatusBar from react-native so we can adjust for the notch on Android devices
 import { FlatList, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import ListItem from "../components/ListItem";
 // 5.) Import Constants from expo-constants to get the status bar height
-import Constants from "expo-constants";
+// 6.) import Screen from "../components/Screen";
+import Screen from "../components/Screen";
 
 const messages = [
   {
@@ -25,7 +25,8 @@ function MessagesScreen(props: {}) {
   return (
     // 1.) Add SafeAreaView in the root component of the screen
     // 4.) Apply the styles object to the SafeAreaView component
-    <SafeAreaView style={styles.screen}>
+    // 7.) Remove SafeAreaView and wrap the FlatList with the Screen component
+    <Screen>
       <FlatList
         data={messages}
         keyExtractor={(message) => message.id.toString()}
@@ -37,7 +38,7 @@ function MessagesScreen(props: {}) {
           />
         )}
       />
-    </SafeAreaView>
+    </Screen>
   );
 }
 
@@ -45,7 +46,7 @@ function MessagesScreen(props: {}) {
 const styles = StyleSheet.create({
   screen: {
     // 6.) Add paddingTop using Constants.statusBarHeight to adjust for the notch on Android devices
-    paddingTop: Constants.statusBarHeight,
+    // paddingTop: Constants.statusBarHeight,
   },
 });
 

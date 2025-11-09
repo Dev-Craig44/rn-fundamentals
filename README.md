@@ -343,3 +343,7 @@ This project is configured to run with **Expo Go** app:
 ### SafeAreaView
 
 This component is now coming from `react-native-safe-area-context` package instead of `react-native`.
+
+- There's something wrong with our implementation. The problem is every time we want to add a new screen, we have to remember to wrap it in a `SafeAreaView` component. This is repetitive and error-prone.
+
+- So we can encapsulate this logic inside a custom `Screen` component that we can reuse across all screens in our app.
