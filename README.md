@@ -351,3 +351,5 @@ This component is now coming from `react-native-safe-area-context` package inste
 ## Separators
 
 - If we put separators between items inside the `renderItem` function, the last item will also have a separator below it, which is not what we want. The better solution is to use the `ItemSeparatorComponent` prop of the `FlatList` component.
+
+- The problem with our current implementation is that we're probably going to have to repeat this code every time we want to add a separator between items in a list. A better solution is to create a reusable `ListItemSeparator` component that we can use across all our lists.
