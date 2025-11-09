@@ -347,3 +347,7 @@ This component is now coming from `react-native-safe-area-context` package inste
 - There's something wrong with our implementation. The problem is every time we want to add a new screen, we have to remember to wrap it in a `SafeAreaView` component. This is repetitive and error-prone.
 
 - So we can encapsulate this logic inside a custom `Screen` component that we can reuse across all screens in our app.
+
+## Separators
+
+- If we put separators between items inside the `renderItem` function, the last item will also have a separator below it, which is not what we want. The better solution is to use the `ItemSeparatorComponent` prop of the `FlatList` component.
