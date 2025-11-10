@@ -1,6 +1,7 @@
 import React from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import ListItem from "../components/ListItem";
+import ListItemDeleteAction from "../components/ListItemDeleteAction";
 import ListItemSeparator from "../components/ListItemSeparator";
 import Screen from "../components/Screen";
 
@@ -9,13 +10,13 @@ const messages = [
     id: 1,
     title: "T1",
     description: "D1",
-    img: require("../assets/images/mosh.jpg"),
+    img: require("../assets/images/craig.jpg"),
   },
   {
     id: 2,
     title: "T2",
     description: "D2",
-    img: require("../assets/images/mosh.jpg"),
+    img: require("../assets/images/craig.jpg"),
   },
 ];
 
@@ -33,10 +34,7 @@ function MessagesScreen(props: {}) {
             onPress={() =>
               console.log("Message selected", JSON.stringify(item, null, 2))
             }
-            // 5.) Set renderRightActions prop to a simple View for now
-            renderRightActions={() => (
-              <View style={{ backgroundColor: "red", width: 70 }} />
-            )}
+            renderRightActions={ListItemDeleteAction}
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
