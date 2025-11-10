@@ -32,8 +32,6 @@ function MessagesScreen(props: {}) {
             image={item.img}
           />
         )}
-        // 1.) Move this code to reusable ListItemSeparator component
-        // 7.) Use the reusable ListItemSeparator component here
         ItemSeparatorComponent={ListItemSeparator}
       />
     </Screen>
