@@ -353,3 +353,11 @@ This component is now coming from `react-native-safe-area-context` package inste
 - If we put separators between items inside the `renderItem` function, the last item will also have a separator below it, which is not what we want. The better solution is to use the `ItemSeparatorComponent` prop of the `FlatList` component.
 
 - The problem with our current implementation is that we're probably going to have to repeat this code every time we want to add a separator between items in a list. A better solution is to create a reusable `ListItemSeparator` component that we can use across all our lists.
+
+## Handling Selections
+
+- Currently, when we tap on a list item, nothing happens. We want to handle this interaction by providing feedback to the user and potentially navigating to a different screen.
+
+- We use `TouchableHighlight`, `TouchableOpacity`, and `TouchableWithoutFeedback` components to handle touch interactions in React Native. These components provide visual feedback when a user taps on them.
+
+- We didn't put any logic inside the `onPress` handler of the `TouchableOpacity` component. In a real-world app, we would typically navigate to a different screen or perform some action when a list item is tapped.

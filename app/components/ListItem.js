@@ -1,17 +1,27 @@
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+// 4.) import onPress from react-native
+import { Image, StyleSheet, TouchableHighlight, View } from "react-native";
 import colors from "../config/colors";
 import AppText from "./AppText";
 
-function ListItem({ title, subTitle, image }) {
+function ListItem({ title, subTitle, image, onPress }) {
   return (
-    <View style={styles.container}>
-      <Image source={image} style={styles.image} />
-      <View>
-        <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.subTitle}>{subTitle}</AppText>
+    // 1.) Wrap this in a TouchableHighlight component
+    <TouchableHighlight
+      // 2.) Handle the onPress event with a console.log for now
+      // 5.) Set onPress to the imported onPress
+      onPress={onPress}
+      // 3.) Add an underlayColor prop with a light color from the colors config
+      underlayColor={colors.light}
+    >
+      <View style={styles.container}>
+        <Image source={image} style={styles.image} />
+        <View>
+          <AppText style={styles.title}>{title}</AppText>
+          <AppText style={styles.subTitle}>{subTitle}</AppText>
+        </View>
       </View>
-    </View>
+    </TouchableHighlight>
   );
 }
 

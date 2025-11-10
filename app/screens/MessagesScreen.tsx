@@ -26,10 +26,14 @@ function MessagesScreen(props: {}) {
         data={messages}
         keyExtractor={(message) => message.id.toString()}
         renderItem={({ item }) => (
+          // This MessagesScreen.tsx is the consumer of ListItem component, so it should decide what to do on press
           <ListItem
             title={item.title}
             subTitle={item.description}
             image={item.img}
+            onPress={() =>
+              console.log("Message selected", JSON.stringify(item, null, 2))
+            }
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
