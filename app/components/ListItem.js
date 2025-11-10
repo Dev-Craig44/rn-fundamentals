@@ -2,18 +2,25 @@ import React from "react";
 import { Image, StyleSheet, TouchableHighlight, View } from "react-native";
 import colors from "../config/colors";
 import AppText from "./AppText";
+// 1.) import the swipeable component
+import Swipeable from "react-native-gesture-handler/Swipeable";
 
-function ListItem({ title, subTitle, image, onPress }) {
+// 4.) Add the renderRightActions prop to the ListItem component so that it can be customized by the consumer
+function ListItem({ title, subTitle, image, onPress, renderRightActions }) {
   return (
-    <TouchableHighlight onPress={onPress} underlayColor={colors.light}>
-      <View style={styles.container}>
-        <Image source={image} style={styles.image} />
-        <View>
-          <AppText style={styles.title}>{title}</AppText>
-          <AppText style={styles.subTitle}>{subTitle}</AppText>
+    // 2.) wrap the entire ListItem in the Swipeable component
+    // 3.) Add the renderRightActions prop and provide a function that returns the actions
+    <Swipeable renderRightActions={renderRightActions}>
+      <TouchableHighlight onPress={onPress} underlayColor={colors.light}>
+        <View style={styles.container}>
+          <Image source={image} style={styles.image} />
+          <View>
+            <AppText style={styles.title}>{title}</AppText>
+            <AppText style={styles.subTitle}>{subTitle}</AppText>
+          </View>
         </View>
-      </View>
-    </TouchableHighlight>
+      </TouchableHighlight>
+    </Swipeable>
   );
 }
 

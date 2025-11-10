@@ -361,3 +361,9 @@ This component is now coming from `react-native-safe-area-context` package inste
 - We use `TouchableHighlight`, `TouchableOpacity`, and `TouchableWithoutFeedback` components to handle touch interactions in React Native. These components provide visual feedback when a user taps on them.
 
 - We didn't put any logic inside the `onPress` handler of the `TouchableOpacity` component. In a real-world app, we would typically navigate to a different screen or perform some action when a list item is tapped.
+
+## Handling Swipes
+
+- To handle swipe gestures on list items, we can use the `react-native-gesture-handler` library, which provides a `Swipeable` component that makes it easy to implement swipe actions.
+
+- We'll use `expo install react-native-gesture-handler` to install the library. We use `expo install` instead of `npm install` because it ensures that we get the correct version of the library that is compatible with our Expo SDK version. We'll usually use `expo install` for any native dependencies in Expo projects.
