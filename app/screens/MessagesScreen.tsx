@@ -34,7 +34,10 @@ function MessagesScreen(props: {}) {
             onPress={() =>
               console.log("Message selected", JSON.stringify(item, null, 2))
             }
-            renderRightActions={ListItemDeleteAction}
+            // This is where we use the ListItemDeleteAction component. With this syntax, we can't set the onPress prop. To solve this, we will have to pass a function that returns the ListItemDeleteAction component.
+            renderRightActions={() => (
+              <ListItemDeleteAction onPress={() => console.log(item)} />
+            )}
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}

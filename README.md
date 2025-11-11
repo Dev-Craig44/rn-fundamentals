@@ -367,3 +367,7 @@ This component is now coming from `react-native-safe-area-context` package inste
 - To handle swipe gestures on list items, we can use the `react-native-gesture-handler` library, which provides a `Swipeable` component that makes it easy to implement swipe actions.
 
 - We'll use `expo install react-native-gesture-handler` to install the library. We use `expo install` instead of `npm install` because it ensures that we get the correct version of the library that is compatible with our Expo SDK version. We'll usually use `expo install` for any native dependencies in Expo projects.
+
+## Delete an Item
+
+- First we need to wrap our list item delete action component in a touchable component so we can handle the onPress event.
