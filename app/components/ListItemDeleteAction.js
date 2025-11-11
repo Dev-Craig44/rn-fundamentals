@@ -4,7 +4,6 @@ import colors from "../config/colors";
 
 function ListItemDeleteAction({ onPress }) {
   return (
-    // 1.) Wrap in touchable component that doesn't give visual feedback
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
         <MaterialCommunityIcons
