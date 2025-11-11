@@ -9,7 +9,6 @@ function Screen({ children }) {
 const styles = StyleSheet.create({
   screen: {
     paddingTop: Constants.statusBarHeight,
-    // set flex 1 to take up the entire screen
     flex: 1,
   },
 });
