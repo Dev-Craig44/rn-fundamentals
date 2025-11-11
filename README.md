@@ -371,3 +371,7 @@ This component is now coming from `react-native-safe-area-context` package inste
 ## Delete an Item
 
 - First we need to wrap our list item delete action component in a touchable component so we can handle the onPress event.
+
+## Implementing Pull to Refresh
+
+- To implement pull-to-refresh functionality in our list, we can use the built-in support provided by the `FlatList` component in React Native. The `FlatList` component has two props that make it easy to add pull-to-refresh: `refreshing` and `onRefresh`.
