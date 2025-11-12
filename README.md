@@ -490,5 +490,8 @@ Our Account Screen will have the following structure:
    - Once ready, extend our `ListItem` component to support rendering an icon on the left side
 
 2. **Implement `AccountScreen` Component**
+
    - Once all building blocks are ready, assemble the Account Screen
    - Use the Icon and ListItem components together
+
+   ## Extending the ListItem Component

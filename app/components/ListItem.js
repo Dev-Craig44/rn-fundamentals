@@ -4,15 +4,28 @@ import Swipeable from "react-native-gesture-handler/Swipeable";
 import colors from "../config/colors";
 import AppText from "./AppText";
 
-function ListItem({ title, subTitle, image, onPress, renderRightActions }) {
+// 2.) Add a ImageComponent prop to ListItem
+function ListItem({
+  title,
+  subTitle,
+  image,
+  ImageComponent,
+  onPress,
+  renderRightActions,
+}) {
   return (
     <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight onPress={onPress} underlayColor={colors.light}>
         <View style={styles.container}>
-          <Image source={image} style={styles.image} />
-          <View>
+          {/* 3.) Render the ImageComponent if it exists. This is so we can pass in any custom image component */}
+          {ImageComponent}
+          {/* 1.) Wrap image in a conditional so that if we don't have an image prop, we don't render the Image component */}
+          {image && <Image source={image} style={styles.image} />}
+          {/* 4.) Give detailsContainer a style */}
+          <View style={styles.detailsContainer}>
             <AppText style={styles.title}>{title}</AppText>
-            <AppText style={styles.subTitle}>{subTitle}</AppText>
+            {/* 5.) Wrap subTitle in a conditional so that if we don't have a subTitle prop, we don't render the AppText component */}
+            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
           </View>
         </View>
       </TouchableHighlight>
@@ -24,6 +37,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     padding: 15,
+  },
+  detailsContainer: {
+    marginLeft: 10,
+    justifyContent: "center",
   },
   image: {
     width: 70,
