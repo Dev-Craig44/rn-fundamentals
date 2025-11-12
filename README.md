@@ -450,3 +450,45 @@ Create a detailed view for individual listings.
 - Test swipe gestures and touch interactions on actual devices
 
 ---
+
+## Planning The Account Screen
+
+Before diving into coding, it's essential to plan the structure and components needed for the Account Screen. Here's a breakdown of what we need:
+
+### Implementation Approach
+
+One way to implement this is using the **Section List** component in React Native. Section List is similar to FlatList but allows you to group items into sections with section headers and section separators.
+
+We could implement the account screen using a Section List with three sections. However, in my opinion, Section List is a little overkill for this particular screen since we only have three menu items, but it's a good exercise to learn how to use the component.
+
+### Screen Structure
+
+Our Account Screen will have the following structure:
+
+1. **Top Section** - A single list item on its own (user profile)
+
+   - Not part of the FlatList
+   - Placed inside a container with margin below
+
+2. **Middle Section** - A FlatList with two menu items
+
+   - My Listings
+   - My Messages
+   - Wrapped in a container with margin below
+
+3. **Bottom Section** - Another independent list item
+   - Log Out option
+   - Single item outside the FlatList
+
+**Essentially:** Two independent list items and one FlatList in the middle.
+
+### Build Steps
+
+1. **Build Reusable `Icon` Component**
+
+   - Create a custom icon component for consistency
+   - Once ready, extend our `ListItem` component to support rendering an icon on the left side
+
+2. **Implement `AccountScreen` Component**
+   - Once all building blocks are ready, assemble the Account Screen
+   - Use the Icon and ListItem components together
