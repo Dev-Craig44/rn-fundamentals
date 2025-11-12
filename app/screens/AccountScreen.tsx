@@ -23,7 +23,7 @@ const menuItems = [
   },
 ];
 
-function AccountScreen(props) {
+function AccountScreen(props: {}) {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
@@ -31,6 +31,9 @@ function AccountScreen(props) {
           title={"Craig Kelly"}
           subTitle={"programmingwithcraig@gmail.com"}
           image={require("../assets/images/craig.jpg")}
+          IconComponent={undefined}
+          onPress={undefined}
+          renderRightActions={undefined}
         />
       </View>
       <View style={styles.container}>
@@ -47,6 +50,10 @@ function AccountScreen(props) {
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
+              subTitle={undefined}
+              image={undefined}
+              onPress={undefined}
+              renderRightActions={undefined}
             />
           )}
         />
@@ -54,6 +61,10 @@ function AccountScreen(props) {
       <ListItem
         title="Log Out"
         IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
+        subTitle={undefined}
+        image={undefined}
+        onPress={undefined}
+        renderRightActions={undefined}
       />
     </Screen>
   );
