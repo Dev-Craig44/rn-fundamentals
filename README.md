@@ -495,3 +495,55 @@ Our Account Screen will have the following structure:
    - Use the Icon and ListItem components together
 
    ## Extending the ListItem Component
+
+   ## Building the Account Screen
+
+Now that we have our `Icon` component ready and have extended our `ListItem` component to support rendering a custom image component on the left side, we can build the `AccountScreen`.
+
+### Implementation Details
+
+The `AccountScreen` consists of three distinct sections:
+
+1. **Profile Section** - A single `ListItem` displaying user information
+
+   - User's name and email
+   - Profile image
+   - Wrapped in a `View` with `marginBottom` for spacing
+
+2. **Menu Section** - A `FlatList` rendering menu options
+
+   - My Listings (with red icon)
+   - My Messages (with teal icon)
+   - Each item uses our custom `Icon` component via the `ImageComponent` prop
+   - Separated by `ListItemSeparator`
+   - Wrapped in a `View` with `marginBottom`
+
+3. **Logout Section** - A standalone `ListItem`
+   - Log Out option with yellow icon
+   - Independent from the FlatList
+
+### Key Techniques Used
+
+- **Conditional Rendering**: The `ListItem` component conditionally renders either a standard image or a custom `ImageComponent` (our `Icon` component)
+- **Component Composition**: Multiple reusable components (`Screen`, `ListItem`, `Icon`, `ListItemSeparator`) work together to create the complete screen
+- **FlatList for Dynamic Content**: The menu items use `FlatList` even though there are only two items, demonstrating the pattern for scalable lists
+- **Consistent Styling**: All sections use the light background color and maintain consistent spacing
+
+### Screen Layout Structure
+
+```tsx
+<Screen style={{ backgroundColor: colors.light }}>
+  {/* Profile Section */}
+  <View style={{ marginBottom: 20 }}>
+    <ListItem ... />
+  </View>
+
+  {/* Menu Section */}
+  <View style={{ marginBottom: 20 }}>
+    <FlatList ... />
+  </View>
+
+  {/* Logout Section */}
+  <ListItem ... />
+</Screen>
+```
