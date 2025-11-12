@@ -375,3 +375,78 @@ This component is now coming from `react-native-safe-area-context` package inste
 ## Implementing Pull to Refresh
 
 - To implement pull-to-refresh functionality in our list, we can use the built-in support provided by the `FlatList` component in React Native. The `FlatList` component has two props that make it easy to add pull-to-refresh: `refreshing` and `onRefresh`.
+
+---
+
+## Exercise
+
+### Build Three New Screens
+
+In this exercise, you'll create three essential screens for the DoneWithIt app:
+
+#### 1. Account Screen
+
+Create a user account screen that will be accessible from a tab navigator (to be added later).
+
+**Requirements:**
+
+- Display user profile information (name, email, avatar)
+- Show three menu options:
+  - **My Listings** - Icon: `format-list-bulleted` (primary color)
+  - **My Messages** - Icon: `email` (secondary color)
+  - **Log Out** - Icon: `logout` (#ffe66d)
+- Use `MaterialCommunityIcons` for all icons
+- Each menu item should be tappable (handlers to be implemented)
+
+**Components to create:**
+
+- `AccountScreen` - Main screen component
+- Consider reusing `ListItem` component for menu items
+
+#### 2. Listings Screen
+
+Build the main feed screen where users browse available listings.
+
+**Requirements:**
+
+- Display a scrollable grid/list of items for sale
+- Each listing card should show:
+  - Item image
+  - Title
+  - Price
+- Use `FlatList` for efficient rendering
+- Implement pull-to-refresh functionality
+- Items should be tappable to view details
+
+**Components to create:**
+
+- `ListingsScreen` - Main screen component
+- `Card` - Reusable card component for displaying listings
+
+#### 3. Listing Details Screen
+
+Create a detailed view for individual listings.
+
+**Requirements:**
+
+- Display full-size item image
+- Show complete listing information (title, price, description)
+- Display seller information
+- Contact seller button
+- Navigate back to listings
+
+**Components to create:**
+
+- `ListingDetailsScreen` - Main screen component
+- Consider breaking down into smaller components as needed
+
+---
+
+### Tips
+
+- Reuse existing components (`ListItem`, `Screen`, `AppText`) where possible
+- Follow the same styling patterns established in `MessagesScreen`
+- Use the colors defined in your `colors` config
+- Test swipe gestures and touch interactions on actual devices
+
+---
