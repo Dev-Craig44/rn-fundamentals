@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     padding: 15,
-    // 6.) Make our container background white
     backgroundColor: colors.white,
   },
   detailsContainer: {
