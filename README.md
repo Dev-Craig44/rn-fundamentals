@@ -547,3 +547,54 @@ The `AccountScreen` consists of three distinct sections:
   <ListItem ... />
 </Screen>
 ```
+
+### Summary
+
+## Lists - Summary
+
+In this section, we learned how to build performant, interactive lists in React Native using the `FlatList` component and created three complete screens for our app.
+
+### Key Concepts Covered
+
+1. **FlatList Component**
+
+   - Used `FlatList` for efficient rendering of scrollable lists
+   - Implemented `keyExtractor` for unique item identification
+   - Added `ItemSeparatorComponent` for visual separation between items
+
+2. **Screen Component Pattern**
+
+   - Created a reusable `Screen` component wrapping `SafeAreaView` from `react-native-safe-area-context`
+   - Encapsulated status bar height logic for consistent spacing across all screens
+   - Applied `edges` prop to control which sides get safe area padding
+
+3. **Interactive List Items**
+
+   - Built a flexible `ListItem` component supporting both images and custom icon components
+   - Implemented touch interactions using `TouchableHighlight`
+   - Added swipe-to-delete functionality using `react-native-gesture-handler`
+   - Created `ListItemDeleteAction` component for delete actions
+
+4. **Pull-to-Refresh**
+
+   - Used `FlatList`'s built-in `refreshing` and `onRefresh` props
+   - Implemented state management for refresh functionality
+
+5. **Component Composition**
+   - Extended `ListItem` to accept `ImageComponent` prop for custom icons
+   - Built reusable `Icon` component with customizable size, background color, and icon color
+   - Created modular, composable components that work together
+
+### Screens Built
+
+1. **MessagesScreen** - List of messages with swipe-to-delete
+2. **AccountScreen** - User profile with menu options using icons
+3. **ListingScreen** - Grid of listings using custom `Card` component
+
+### Key Takeaways
+
+- Use `FlatList` for performance when rendering lists of data
+- Create reusable components to avoid code duplication
+- Leverage component composition to build complex UIs from simple pieces
+- Always use `react-native-safe-area-context` for proper safe area handling
+- Install native dependencies with `npx expo install` to ensure SDK compatibility

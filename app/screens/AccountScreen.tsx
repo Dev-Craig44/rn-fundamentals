@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import Icon from "../components/Icon";
@@ -13,6 +14,7 @@ const menuItems = [
       name: "format-list-bulleted",
       backgroundColor: colors.primary,
     },
+    targetScreen: "/listings",
   },
   {
     title: "My Messages",
@@ -20,10 +22,13 @@ const menuItems = [
       name: "email",
       backgroundColor: colors.secondary,
     },
+    targetScreen: "/messages",
   },
 ];
 
 function AccountScreen(props: {}) {
+  const router = useRouter();
+
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
@@ -52,7 +57,7 @@ function AccountScreen(props: {}) {
               }
               subTitle={undefined}
               image={undefined}
-              onPress={undefined}
+              onPress={() => router.push(item.targetScreen as any)}
               renderRightActions={undefined}
             />
           )}
