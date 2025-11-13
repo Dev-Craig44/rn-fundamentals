@@ -614,3 +614,10 @@ Learn how to handle user input in React Native by building forms with various in
 - Managing form state effectively
 
 ---
+
+### Text Input
+
+- `secureTextEntry` hides the input text for sensitive information like passwords.
+- `keyboardType` customizes the keyboard layout for different input types (e.g., email, numeric).
+- `clearButtonMode` (iOS only) adds a clear button to the text input for easy clearing of text.
+- `autoCapitalize` controls automatic capitalization behavior (e.g., sentences, words).
