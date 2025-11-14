@@ -631,3 +631,7 @@ Learn how to handle user input in React Native by building forms with various in
 ### Refactoring: Extracting Default Styles
 
 - To avoid repeating default styles across multiple components, we can extract these styles into a separate file (e.g., `defaultStyles.js`) and import them wherever needed.
+
+### Switch
+
+- The `Switch` component is used to capture a boolean value, typically representing an on/off or true/false state.
