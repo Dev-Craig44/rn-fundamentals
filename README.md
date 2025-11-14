@@ -621,3 +621,9 @@ Learn how to handle user input in React Native by building forms with various in
 - `keyboardType` customizes the keyboard layout for different input types (e.g., email, numeric).
 - `clearButtonMode` (iOS only) adds a clear button to the text input for easy clearing of text.
 - `autoCapitalize` controls automatic capitalization behavior (e.g., sentences, words).
+
+### Building a Pretty TextInput
+
+- To create a visually appealing `TextInput`, we can encapsulate it within a custom component that applies consistent styling and behavior across the app.
+
+- We're using `App` to distinguish our custom components from the built-in React Native components.
