@@ -4,7 +4,7 @@ A hands-on journey through React Native fundamentals, packed with practical exam
 
 ---
 
-## Styling
+## 1. Styling
 
 ### Borders
 
@@ -112,7 +112,7 @@ export default AppText;
 
 ---
 
-## Icons
+### Icons
 
 Icons enhance your app's visual appeal and usability. With Expo, you can access a wide range of scalable icons.
 
@@ -137,7 +137,7 @@ Icons enhance your app's visual appeal and usability. With Expo, you can access 
 
 ---
 
-## Platform-Specific Code
+### Platform-Specific Code
 
 React Native allows platform-specific customizations using `Platform.select()` or separate files (`.ios.js` and `.android.js`).
 
@@ -156,13 +156,13 @@ const styles = StyleSheet.create({
 
 ---
 
-## Organizing Styles
+### Organizing Styles
 
 For better maintainability, separate styles into their own files. For example, refactor the `AppText` component into a folder with `AppText.js` and `styles.js`.
 
 ---
 
-## Exercises
+### Exercises
 
 ### Button Component
 
@@ -197,7 +197,7 @@ Design a screen to display listing details, including the title, price, descript
 
 ---
 
-## UI Toolkits
+### UI Toolkits
 
 For real-world apps, consider using a UI toolkit:
 
@@ -205,7 +205,7 @@ For real-world apps, consider using a UI toolkit:
 - [React Native Paper](https://callstack.github.io/react-native-paper/)
 - [Native Base](https://nativebase.io/)
 
-## Lists
+## 2. Lists
 
 ### Introduction
 
@@ -221,7 +221,7 @@ In this section, you'll create:
 
 ---
 
-## Troubleshooting & Setup Notes
+### Troubleshooting & Setup Notes
 
 ### Dependency Installation Issues
 
@@ -304,7 +304,7 @@ npm install --legacy-peer-deps
 npx expo start -c
 
 # Fix Expo package versions
-npx expo install --fix --legacy-peer-deps
+npx expo install --fix --legacy-peer_deps
 
 # Clear all caches
 watchman watch-del-all
@@ -330,7 +330,7 @@ This project is configured to run with **Expo Go** app:
 - After updating any native dependencies, clear Metro cache with `npx expo start -c`
 - React Native version (0.81.5) is determined by Expo SDK 54 and cannot be changed when using Expo Go
 
-## FlatList
+### FlatList
 
 - A performant interface for rendering basic, flat lists. Supporting most handy features like:
   - Fully cross-platform
@@ -338,7 +338,7 @@ This project is configured to run with **Expo Go** app:
   - Configurable viewability callbacks
   - Header and footer support
 
-## Extracting the Screen Component
+### Extracting the Screen Component
 
 ### SafeAreaView
 
@@ -348,13 +348,13 @@ This component is now coming from `react-native-safe-area-context` package inste
 
 - So we can encapsulate this logic inside a custom `Screen` component that we can reuse across all screens in our app.
 
-## Separators
+### Separators
 
 - If we put separators between items inside the `renderItem` function, the last item will also have a separator below it, which is not what we want. The better solution is to use the `ItemSeparatorComponent` prop of the `FlatList` component.
 
 - The problem with our current implementation is that we're probably going to have to repeat this code every time we want to add a separator between items in a list. A better solution is to create a reusable `ListItemSeparator` component that we can use across all our lists.
 
-## Handling Selections
+### Handling Selections
 
 - Currently, when we tap on a list item, nothing happens. We want to handle this interaction by providing feedback to the user and potentially navigating to a different screen.
 
@@ -362,25 +362,25 @@ This component is now coming from `react-native-safe-area-context` package inste
 
 - We didn't put any logic inside the `onPress` handler of the `TouchableOpacity` component. In a real-world app, we would typically navigate to a different screen or perform some action when a list item is tapped.
 
-## Handling Swipes
+### Handling Swipes
 
 - To handle swipe gestures on list items, we can use the `react-native-gesture-handler` library, which provides a `Swipeable` component that makes it easy to implement swipe actions.
 
 - We'll use `expo install react-native-gesture-handler` to install the library. We use `expo install` instead of `npm install` because it ensures that we get the correct version of the library that is compatible with our Expo SDK version. We'll usually use `expo install` for any native dependencies in Expo projects.
 
-## Delete an Item
+### Delete an Item
 
 - First we need to wrap our list item delete action component in a touchable component so we can handle the onPress event.
 
-## Implementing Pull to Refresh
+### Implementing Pull to Refresh
 
 - To implement pull-to-refresh functionality in our list, we can use the built-in support provided by the `FlatList` component in React Native. The `FlatList` component has two props that make it easy to add pull-to-refresh: `refreshing` and `onRefresh`.
 
 ---
 
-## Exercise
+### Exercise
 
-### Build Three New Screens
+#### Build Three New Screens
 
 In this exercise, you'll create three essential screens for the DoneWithIt app:
 
@@ -442,7 +442,7 @@ Create a detailed view for individual listings.
 
 ---
 
-### Tips
+#### Tips
 
 - Reuse existing components (`ListItem`, `Screen`, `AppText`) where possible
 - Follow the same styling patterns established in `MessagesScreen`
@@ -451,17 +451,17 @@ Create a detailed view for individual listings.
 
 ---
 
-## Planning The Account Screen
+#### Planning The Account Screen
 
 Before diving into coding, it's essential to plan the structure and components needed for the Account Screen. Here's a breakdown of what we need:
 
-### Implementation Approach
+#### Implementation Approach
 
 One way to implement this is using the **Section List** component in React Native. Section List is similar to FlatList but allows you to group items into sections with section headers and section separators.
 
 We could implement the account screen using a Section List with three sections. However, in my opinion, Section List is a little overkill for this particular screen since we only have three menu items, but it's a good exercise to learn how to use the component.
 
-### Screen Structure
+#### Screen Structure
 
 Our Account Screen will have the following structure:
 
@@ -482,7 +482,7 @@ Our Account Screen will have the following structure:
 
 **Essentially:** Two independent list items and one FlatList in the middle.
 
-### Build Steps
+#### Build Steps
 
 1. **Build Reusable `Icon` Component**
 
@@ -494,13 +494,13 @@ Our Account Screen will have the following structure:
    - Once all building blocks are ready, assemble the Account Screen
    - Use the Icon and ListItem components together
 
-   ## Extending the ListItem Component
+   #### Extending the ListItem Component
 
-   ## Building the Account Screen
+   #### Building the Account Screen
 
 Now that we have our `Icon` component ready and have extended our `ListItem` component to support rendering a custom image component on the left side, we can build the `AccountScreen`.
 
-### Implementation Details
+#### Implementation Details
 
 The `AccountScreen` consists of three distinct sections:
 
@@ -522,14 +522,14 @@ The `AccountScreen` consists of three distinct sections:
    - Log Out option with yellow icon
    - Independent from the FlatList
 
-### Key Techniques Used
+#### Key Techniques Used
 
 - **Conditional Rendering**: The `ListItem` component conditionally renders either a standard image or a custom `ImageComponent` (our `Icon` component)
 - **Component Composition**: Multiple reusable components (`Screen`, `ListItem`, `Icon`, `ListItemSeparator`) work together to create the complete screen
 - **FlatList for Dynamic Content**: The menu items use `FlatList` even though there are only two items, demonstrating the pattern for scalable lists
 - **Consistent Styling**: All sections use the light background color and maintain consistent spacing
 
-### Screen Layout Structure
+#### Screen Layout Structure
 
 ```tsx
 <Screen style={{ backgroundColor: colors.light }}>
@@ -548,13 +548,13 @@ The `AccountScreen` consists of three distinct sections:
 </Screen>
 ```
 
-### Summary
+#### Summary
 
-## Lists - Summary
+### Lists - Summary
 
 In this section, we learned how to build performant, interactive lists in React Native using the `FlatList` component and created three complete screens for our app.
 
-### Key Concepts Covered
+#### Key Concepts Covered
 
 1. **FlatList Component**
 
@@ -585,16 +585,219 @@ In this section, we learned how to build performant, interactive lists in React 
    - Built reusable `Icon` component with customizable size, background color, and icon color
    - Created modular, composable components that work together
 
-### Screens Built
+#### Screens Built
 
 1. **MessagesScreen** - List of messages with swipe-to-delete
 2. **AccountScreen** - User profile with menu options using icons
 3. **ListingScreen** - Grid of listings using custom `Card` component
 
-### Key Takeaways
+#### Key Takeaways
 
 - Use `FlatList` for performance when rendering lists of data
 - Create reusable components to avoid code duplication
 - Leverage component composition to build complex UIs from simple pieces
 - Always use `react-native-safe-area-context` for proper safe area handling
 - Install native dependencies with `npx expo install` to ensure SDK compatibility
+
+## 3. Input Components
+
+### Introduction
+
+Learn how to handle user input in React Native by building forms with various input components, managing state, and validating user data.
+
+**What You'll Learn:**
+
+- Built-in input components and their props
+- Building custom, reusable input components
+- Creating a cross-platform picker component
+- Working with modals for selections
+- Managing form state effectively
+
+---
+
+### Built-in Input Components
+
+#### TextInput
+
+React Native's `TextInput` component provides several useful props:
+
+- `secureTextEntry` - Hides input text for passwords
+- `keyboardType` - Customizes keyboard layout (email, numeric, etc.)
+- `clearButtonMode` - Adds clear button (iOS only)
+- `autoCapitalize` - Controls automatic capitalization
+- `placeholder` - Shows hint text when empty
+- `placeholderTextColor` - Sets placeholder text color (default is too light)
+
+#### Switch
+
+The `Switch` component captures boolean values for on/off or true/false states.
+
+#### Picker (Dropdown)
+
+**Important:** The built-in React Native `Picker` is deprecated. Use `@react-native-picker/picker` instead.
+
+**Installation:**
+
+```bash
+npx expo install @react-native-picker/picker --legacy-peer_deps
+```
+
+**Basic Usage:**
+
+```tsx
+import { Picker } from "@react-native-picker/picker";
+import { useState } from "react";
+
+function PickerExample() {
+  const [value, setValue] = useState("javascript");
+
+  return (
+    <Picker selectedValue={value} onValueChange={setValue}>
+      <Picker.Item label="JavaScript" value="javascript" />
+      <Picker.Item label="TypeScript" value="typescript" />
+    </Picker>
+  );
+}
+```
+
+---
+
+### Building Custom Input Components
+
+#### Why Build Custom Components?
+
+- Complete control over styling and behavior
+- Consistent cross-platform appearance
+- Seamless integration with app design system
+- No platform-specific styling workarounds
+- Reduced code repetition
+
+#### Extracting Default Styles
+
+Create a centralized styles configuration to avoid repetition:
+
+```tsx
+// app/config/styles.ts
+import { Platform } from "react-native";
+
+export default {
+  colors: {
+    primary: "#fc5c65",
+    secondary: "#4ecdc4",
+    medium: "#6e6969",
+    light: "#f8f4f4",
+    dark: "#0c0c0c",
+    placeholder: "#999",
+  },
+  text: {
+    color: "#0c0c0c",
+    fontSize: 18,
+    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
+  },
+};
+```
+
+#### AppTextInput Component
+
+A reusable text input component with:
+
+- Icon support using `MaterialCommunityIcons`
+- Consistent default styling
+- Proper placeholder visibility
+- Flexible prop passing
+
+**Key Features:**
+
+```tsx
+<AppTextInput
+  icon="email"
+  placeholder="Email"
+  placeholderTextColor={defaultStyles.colors.placeholder}
+/>
+```
+
+**Placeholder Text Visibility:**
+React Native's default placeholder color (`#C7C7CD`) has very low contrast against light backgrounds. We solve this by setting `placeholderTextColor="#999"` for better visibility.
+
+#### AppPicker Component
+
+Following the same pattern as `AppTextInput` to maintain visual consistency:
+
+- Same container styling and layout
+- Icon integration on the left
+- Chevron-down icon on the right
+- Uses default text styles
+- Opens a modal for selections
+
+---
+
+### Working with Modals
+
+#### Displaying Picker Items
+
+Use React Native's `Modal` component to show a full-screen list of options:
+
+```tsx
+<Modal visible={modalVisible} animationType="slide">
+  <Screen edges={["top"]}>
+    <FlatList
+      data={items}
+      keyExtractor={(item) => item.value.toString()}
+      renderItem={({ item }) => (
+        <PickerItem label={item.label} onPress={() => handleSelect(item)} />
+      )}
+    />
+  </Screen>
+</Modal>
+```
+
+**Important Modal Considerations:**
+
+- Use `animationType="slide"` for smooth bottom-to-top animation
+- Wrap modal content in `Screen` with `edges={["top"]}` to respect safe areas
+- Modals render outside normal view hierarchy, requiring explicit safe area handling
+
+#### Handling Selections
+
+Pass a callback function from the parent component to handle item selection:
+
+1. User taps the picker → Modal opens
+2. User selects an item from the list
+3. `onSelectItem` callback updates parent state
+4. Modal closes
+5. Selected value displays in the picker
+
+**Example:**
+
+```tsx
+function ParentComponent() {
+  const [category, setCategory] = useState();
+
+  return (
+    <AppPicker
+      items={categories}
+      selectedItem={category}
+      onSelectItem={setCategory}
+      placeholder="Category"
+      icon="apps"
+    />
+  );
+}
+```
+
+---
+
+### Summary
+
+In this section, we learned to:
+
+✅ Use React Native's built-in input components (`TextInput`, `Switch`, `Picker`)  
+✅ Build custom, reusable input components (`AppTextInput`, `AppPicker`)  
+✅ Centralize styles for consistency and maintainability  
+✅ Handle placeholder text visibility issues  
+✅ Implement modals for custom picker selections  
+✅ Manage component state and parent-child communication
+
+**Key Takeaway:** Building custom components gives you complete control over the user experience while maintaining consistency across your entire app.
+
+---
