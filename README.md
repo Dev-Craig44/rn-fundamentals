@@ -742,3 +742,9 @@ By creating custom input components, we:
 This approach provides a solid foundation for building forms throughout our application.
 
 ---
+
+### Modals
+
+Modals are used to display content above an existing screen, often for user input or important information.
+
+A user should be able to tap on our category picker to open a modal with a list of categories to choose from.

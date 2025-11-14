@@ -6,7 +6,7 @@ import Screen from "./components/Screen";
 export default function Index() {
   return (
     <>
-      <Screen style={undefined}>
+      <Screen edges={["top"]}>
         <AppPicker icon="apps" placeholder={"Category"} />
         <AppTextInput icon={"email"} placeholder={"Email"} />
       </Screen>
