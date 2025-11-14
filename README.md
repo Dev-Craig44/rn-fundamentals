@@ -304,7 +304,7 @@ npm install --legacy-peer-deps
 npx expo start -c
 
 # Fix Expo package versions
-npx expo install --fix --legacy-peer-deps
+npx expo install --fix --legacy-peer_deps
 
 # Clear all caches
 watchman watch-del-all
@@ -696,3 +696,49 @@ npx expo install @react-native-community/datetimepicker --legacy-peer-deps
 ```
 
 **Note:** DateTimePicker is different from the Picker component - it's specifically designed for date and time selection with native platform UI.
+
+### Building a Custom Picker
+
+#### Look & Feel
+
+To create a visually consistent picker component that matches our app's design system, we built custom input components following these principles:
+
+**AppTextInput Component**
+
+We created a reusable `AppTextInput` component that wraps React Native's `TextInput` with:
+
+- Icon support using `MaterialCommunityIcons` on the left side
+- Consistent default styling from our centralized styles config
+- Proper placeholder text visibility using `placeholderTextColor`
+- Flexible prop passing with the spread operator
+
+**AppPicker Component**
+
+Following the same design pattern as `AppTextInput`, we built `AppPicker` to maintain visual consistency:
+
+- Same container styling and layout structure
+- Icon integration on the left side
+- Uses the same default text styles
+- Creates a cohesive form experience across all input types
+
+**Placeholder Text Visibility**
+
+React Native's default placeholder color (`#C7C7CD`) has very low contrast against light backgrounds, making it nearly invisible. We solved this by:
+
+1. Adding a `placeholder` color (`#999`) to our default styles configuration
+2. Setting `placeholderTextColor={defaultStyles.colors.placeholder}` on all inputs
+3. Using medium gray for better visibility while still distinguishing it from user input
+
+**Why Build Custom Components?**
+
+By creating custom input components, we:
+
+- Maintain complete control over styling and behavior
+- Ensure consistent cross-platform appearance (iOS and Android look identical)
+- Integrate seamlessly with our app's design system
+- Eliminate platform-specific styling workarounds
+- Reduce code repetition and improve maintainability
+
+This approach provides a solid foundation for building forms throughout our application.
+
+---
