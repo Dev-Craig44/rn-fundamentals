@@ -605,154 +605,199 @@ In this section, we learned how to build performant, interactive lists in React 
 
 Learn how to handle user input in React Native by building forms with various input components, managing state, and validating user data.
 
-#### What You'll Learn
+**What You'll Learn:**
 
-- Built-in input components
-- Building pretty text boxes
-- Building a cross-platform picker component
-- Form validation and error handling
+- Built-in input components and their props
+- Building custom, reusable input components
+- Creating a cross-platform picker component
+- Working with modals for selections
 - Managing form state effectively
 
 ---
 
-### Text Input
+### Built-in Input Components
 
-- `secureTextEntry` hides the input text for sensitive information like passwords.
-- `keyboardType` customizes the keyboard layout for different input types (e.g., email, numeric).
-- `clearButtonMode` (iOS only) adds a clear button to the text input for easy clearing of text.
-- `autoCapitalize` controls automatic capitalization behavior (e.g., sentences, words).
+#### TextInput
 
-### Building a Pretty TextInput
+React Native's `TextInput` component provides several useful props:
 
-- To create a visually appealing `TextInput`, we can encapsulate it within a custom component that applies consistent styling and behavior across the app.
+- `secureTextEntry` - Hides input text for passwords
+- `keyboardType` - Customizes keyboard layout (email, numeric, etc.)
+- `clearButtonMode` - Adds clear button (iOS only)
+- `autoCapitalize` - Controls automatic capitalization
+- `placeholder` - Shows hint text when empty
+- `placeholderTextColor` - Sets placeholder text color (default is too light)
 
-- We're using `App` to distinguish our custom components from the built-in React Native components.
+#### Switch
 
-### Refactoring: Extracting Default Styles
+The `Switch` component captures boolean values for on/off or true/false states.
 
-- To avoid repeating default styles across multiple components, we can extract these styles into a separate file (e.g., `defaultStyles.js`) and import them wherever needed.
+#### Picker (Dropdown)
 
-### Switch
+**Important:** The built-in React Native `Picker` is deprecated. Use `@react-native-picker/picker` instead.
 
-- The `Switch` component is used to capture a boolean value, typically representing an on/off or true/false state.
-
-### Picker (Dropdown)
-
-The `Picker` component allows users to select a value from a list of options, functioning as a dropdown menu.
-
-**Important:** The built-in React Native `Picker` has been deprecated. Use `@react-native-picker/picker` instead, which is a community-maintained package that works with Expo.
-
-#### Installation
+**Installation:**
 
 ```bash
-npx expo install @react-native-picker/picker --legacy-peer-deps
+npx expo install @react-native-picker/picker --legacy-peer_deps
 ```
 
-#### Basic Usage
+**Basic Usage:**
 
 ```tsx
-import React, { useState } from "react";
-import { View } from "react-native";
 import { Picker } from "@react-native-picker/picker";
+import { useState } from "react";
 
 function PickerExample() {
-  const [selectedValue, setSelectedValue] = useState("javascript");
+  const [value, setValue] = useState("javascript");
 
   return (
-    <View>
-      <Picker
-        selectedValue={selectedValue}
-        onValueChange={(itemValue) => setSelectedValue(itemValue)}
-      >
-        <Picker.Item label="JavaScript" value="javascript" />
-        <Picker.Item label="TypeScript" value="typescript" />
-        <Picker.Item label="Python" value="python" />
-      </Picker>
-    </View>
+    <Picker selectedValue={value} onValueChange={setValue}>
+      <Picker.Item label="JavaScript" value="javascript" />
+      <Picker.Item label="TypeScript" value="typescript" />
+    </Picker>
   );
 }
 ```
 
-#### Building a Custom Picker
-
-While `@react-native-picker/picker` works well for basic use cases, we'll learn how to build a custom picker component to:
-
-- Have complete control over styling and behavior
-- Maintain a consistent cross-platform appearance
-- Integrate seamlessly with our app's design system
-
-This approach eliminates the need for platform-specific styling workarounds.
-
 ---
 
-### DateTimePicker
+### Building Custom Input Components
 
-For selecting date and time values, use `@react-native-community/datetimepicker`, which is fully supported by Expo.
+#### Why Build Custom Components?
 
-#### Installation
+- Complete control over styling and behavior
+- Consistent cross-platform appearance
+- Seamless integration with app design system
+- No platform-specific styling workarounds
+- Reduced code repetition
 
-```bash
-npx expo install @react-native-community/datetimepicker --legacy-peer-deps
+#### Extracting Default Styles
+
+Create a centralized styles configuration to avoid repetition:
+
+```tsx
+// app/config/styles.ts
+import { Platform } from "react-native";
+
+export default {
+  colors: {
+    primary: "#fc5c65",
+    secondary: "#4ecdc4",
+    medium: "#6e6969",
+    light: "#f8f4f4",
+    dark: "#0c0c0c",
+    placeholder: "#999",
+  },
+  text: {
+    color: "#0c0c0c",
+    fontSize: 18,
+    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
+  },
+};
 ```
 
-**Note:** DateTimePicker is different from the Picker component - it's specifically designed for date and time selection with native platform UI.
+#### AppTextInput Component
 
-### Building a Custom Picker
+A reusable text input component with:
 
-#### Look & Feel
+- Icon support using `MaterialCommunityIcons`
+- Consistent default styling
+- Proper placeholder visibility
+- Flexible prop passing
 
-To create a visually consistent picker component that matches our app's design system, we built custom input components following these principles:
+**Key Features:**
 
-**AppTextInput Component**
+```tsx
+<AppTextInput
+  icon="email"
+  placeholder="Email"
+  placeholderTextColor={defaultStyles.colors.placeholder}
+/>
+```
 
-We created a reusable `AppTextInput` component that wraps React Native's `TextInput` with:
+**Placeholder Text Visibility:**
+React Native's default placeholder color (`#C7C7CD`) has very low contrast against light backgrounds. We solve this by setting `placeholderTextColor="#999"` for better visibility.
 
-- Icon support using `MaterialCommunityIcons` on the left side
-- Consistent default styling from our centralized styles config
-- Proper placeholder text visibility using `placeholderTextColor`
-- Flexible prop passing with the spread operator
+#### AppPicker Component
 
-**AppPicker Component**
+Following the same pattern as `AppTextInput` to maintain visual consistency:
 
-Following the same design pattern as `AppTextInput`, we built `AppPicker` to maintain visual consistency:
-
-- Same container styling and layout structure
-- Icon integration on the left side
-- Uses the same default text styles
-- Creates a cohesive form experience across all input types
-
-**Placeholder Text Visibility**
-
-React Native's default placeholder color (`#C7C7CD`) has very low contrast against light backgrounds, making it nearly invisible. We solved this by:
-
-1. Adding a `placeholder` color (`#999`) to our default styles configuration
-2. Setting `placeholderTextColor={defaultStyles.colors.placeholder}` on all inputs
-3. Using medium gray for better visibility while still distinguishing it from user input
-
-**Why Build Custom Components?**
-
-By creating custom input components, we:
-
-- Maintain complete control over styling and behavior
-- Ensure consistent cross-platform appearance (iOS and Android look identical)
-- Integrate seamlessly with our app's design system
-- Eliminate platform-specific styling workarounds
-- Reduce code repetition and improve maintainability
-
-This approach provides a solid foundation for building forms throughout our application.
+- Same container styling and layout
+- Icon integration on the left
+- Chevron-down icon on the right
+- Uses default text styles
+- Opens a modal for selections
 
 ---
 
-### Modals
+### Working with Modals
 
-Modals are used to display content above an existing screen, often for user input or important information.
+#### Displaying Picker Items
 
-A user should be able to tap on our category picker to open a modal with a list of categories to choose from.
+Use React Native's `Modal` component to show a full-screen list of options:
 
-### Showing Picker Items
+```tsx
+<Modal visible={modalVisible} animationType="slide">
+  <Screen edges={["top"]}>
+    <FlatList
+      data={items}
+      keyExtractor={(item) => item.value.toString()}
+      renderItem={({ item }) => (
+        <PickerItem label={item.label} onPress={() => handleSelect(item)} />
+      )}
+    />
+  </Screen>
+</Modal>
+```
 
-To display the list of categories in a modal, we can use the `Modal` component from React Native. Inside the modal, we can render a `FlatList` to show all available categories. When a user selects a category, we update the selected value and close the modal.
+**Important Modal Considerations:**
 
-### Handling Selections
+- Use `animationType="slide"` for smooth bottom-to-top animation
+- Wrap modal content in `Screen` with `edges={["top"]}` to respect safe areas
+- Modals render outside normal view hierarchy, requiring explicit safe area handling
 
-When a user selects a category from the modal, we need to handle the selection by updating the state in the parent component. We can achieve this by passing a callback function as a prop to the `AppPicker` component, which will be called with the selected category when an item is tapped.
+#### Handling Selections
+
+Pass a callback function from the parent component to handle item selection:
+
+1. User taps the picker → Modal opens
+2. User selects an item from the list
+3. `onSelectItem` callback updates parent state
+4. Modal closes
+5. Selected value displays in the picker
+
+**Example:**
+
+```tsx
+function ParentComponent() {
+  const [category, setCategory] = useState();
+
+  return (
+    <AppPicker
+      items={categories}
+      selectedItem={category}
+      onSelectItem={setCategory}
+      placeholder="Category"
+      icon="apps"
+    />
+  );
+}
+```
+
+---
+
+### Summary
+
+In this section, we learned to:
+
+✅ Use React Native's built-in input components (`TextInput`, `Switch`, `Picker`)  
+✅ Build custom, reusable input components (`AppTextInput`, `AppPicker`)  
+✅ Centralize styles for consistency and maintainability  
+✅ Handle placeholder text visibility issues  
+✅ Implement modals for custom picker selections  
+✅ Manage component state and parent-child communication
+
+**Key Takeaway:** Building custom components gives you complete control over the user experience while maintaining consistency across your entire app.
+
+---
