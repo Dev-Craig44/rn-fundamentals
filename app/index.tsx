@@ -7,9 +7,7 @@ export default function Index() {
   return (
     <>
       <Screen style={undefined}>
-        {/* 6.) render AppPicker w/ a placeholder prop */}
         <AppPicker icon="apps" placeholder={"Category"} />
-        {/* 7.) render AppTextInput */}
         <AppTextInput icon={"email"} placeholder={"Email"} />
       </Screen>
     </>

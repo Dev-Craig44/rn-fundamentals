@@ -1,12 +1,8 @@
-// 1.) copy and paste all our code from the AppTextInput.js file into this new file
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StyleSheet, View } from "react-native";
 import defaultStyles from "../config/styles";
-// 4.) import our AppText component
 import AppText from "./AppText";
 
-// 2.) rename our function and the file to AppPicker using F2
-// 5.) add a placeholder prop to our function
 function AppPicker({ icon, placeholder, ...otherProps }) {
   return (
     <View style={styles.container}>
@@ -18,10 +14,7 @@ function AppPicker({ icon, placeholder, ...otherProps }) {
           style={styles.icon}
         />
       )}
-      {/* 3.) remove this text input and replace it with a text component and give it a placeholder */}
-      {/* 9.) give our <AppText> a style prop */}
       <AppText style={styles.text}>{placeholder}</AppText>
-      {/* 8.) add a chevron icon */}
       <MaterialCommunityIcons
         name="chevron-down"
         size={20}
@@ -46,7 +39,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
 
-  //   10.) set our flex property to 1 so it takes up all available space
   text: {
     flex: 1,
   },
