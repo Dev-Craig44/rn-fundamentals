@@ -13,7 +13,6 @@ import AppText from "./AppText";
 import PickerItem from "./PickerItem";
 import Screen from "./Screen";
 
-// 3.) add items prop to AppPicker
 function AppPicker({ icon, items, placeholder }) {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -40,11 +39,9 @@ function AppPicker({ icon, items, placeholder }) {
       <Modal visible={modalVisible} animationType="slide">
         <Screen edges={["top"]} style={{ paddingTop: 50 }}>
           <Button title="Close" onPress={() => setModalVisible(false)} />
-          {/* 4.) render our items as a FlatList */}
           <FlatList
             data={items}
             keyExtractor={(item) => item.value.toString()}
-            // 10.) render each item as a PickerItem
             renderItem={({ item }) => (
               <PickerItem
                 label={item.label}
