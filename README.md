@@ -635,3 +635,64 @@ Learn how to handle user input in React Native by building forms with various in
 ### Switch
 
 - The `Switch` component is used to capture a boolean value, typically representing an on/off or true/false state.
+
+### Picker (Dropdown)
+
+The `Picker` component allows users to select a value from a list of options, functioning as a dropdown menu.
+
+**Important:** The built-in React Native `Picker` has been deprecated. Use `@react-native-picker/picker` instead, which is a community-maintained package that works with Expo.
+
+#### Installation
+
+```bash
+npx expo install @react-native-picker/picker --legacy-peer-deps
+```
+
+#### Basic Usage
+
+```tsx
+import React, { useState } from "react";
+import { View } from "react-native";
+import { Picker } from "@react-native-picker/picker";
+
+function PickerExample() {
+  const [selectedValue, setSelectedValue] = useState("javascript");
+
+  return (
+    <View>
+      <Picker
+        selectedValue={selectedValue}
+        onValueChange={(itemValue) => setSelectedValue(itemValue)}
+      >
+        <Picker.Item label="JavaScript" value="javascript" />
+        <Picker.Item label="TypeScript" value="typescript" />
+        <Picker.Item label="Python" value="python" />
+      </Picker>
+    </View>
+  );
+}
+```
+
+#### Building a Custom Picker
+
+While `@react-native-picker/picker` works well for basic use cases, we'll learn how to build a custom picker component to:
+
+- Have complete control over styling and behavior
+- Maintain a consistent cross-platform appearance
+- Integrate seamlessly with our app's design system
+
+This approach eliminates the need for platform-specific styling workarounds.
+
+---
+
+### DateTimePicker
+
+For selecting date and time values, use `@react-native-community/datetimepicker`, which is fully supported by Expo.
+
+#### Installation
+
+```bash
+npx expo install @react-native-community/datetimepicker --legacy-peer-deps
+```
+
+**Note:** DateTimePicker is different from the Picker component - it's specifically designed for date and time selection with native platform UI.
