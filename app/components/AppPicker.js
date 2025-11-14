@@ -7,20 +7,15 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import AppText from "./AppText";
-// 9.) import Screen component
 import defaultStyles from "../config/styles";
+import AppText from "./AppText";
 import Screen from "./Screen";
 
 function AppPicker({ icon, placeholder, ...otherProps }) {
-  // 4.) Declare a state variable to control modal visibility --- IGNORE ---
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    // 3. wrap this return statement with a React Fragment
     <>
-      {/* // 1.) wrap this component with a TouchableWithoutFeedback */}
-      {/* 5.) set modalVisible to true when pressed */}
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.container}>
           {icon && (
@@ -39,17 +34,7 @@ function AppPicker({ icon, placeholder, ...otherProps }) {
           />
         </View>
       </TouchableWithoutFeedback>
-      {/* 2.) add the modal component here */}
-      {/* 6.) bind modalVisible to the visible prop */}
-      <Modal
-        visible={modalVisible}
-        //   12.) add sliding animation
-        animationType="slide"
-      >
-        {/* 7.) add buton to close the modal and add title and onPress prop */}
-        {/* This button is hiding behind the notch on the device */}
-        {/* 8.) wrap the button with our screen*/}
-        {/* 11.) set edges prop to top */}
+      <Modal visible={modalVisible} animationType="slide">
         <Screen edges={["top"]}>
           <Button title="Close" onPress={() => setModalVisible(false)} />
         </Screen>
