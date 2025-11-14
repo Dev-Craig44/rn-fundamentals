@@ -627,3 +627,7 @@ Learn how to handle user input in React Native by building forms with various in
 - To create a visually appealing `TextInput`, we can encapsulate it within a custom component that applies consistent styling and behavior across the app.
 
 - We're using `App` to distinguish our custom components from the built-in React Native components.
+
+### Refactoring: Extracting Default Styles
+
+- To avoid repeating default styles across multiple components, we can extract these styles into a separate file (e.g., `defaultStyles.js`) and import them wherever needed.
