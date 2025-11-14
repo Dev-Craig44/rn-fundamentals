@@ -13,7 +13,8 @@ import AppText from "./AppText";
 import PickerItem from "./PickerItem";
 import Screen from "./Screen";
 
-function AppPicker({ icon, items, placeholder }) {
+// 3.) add our new props to the function signature
+function AppPicker({ icon, items, placeholder, selectedItem, onSelectItem }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -28,7 +29,10 @@ function AppPicker({ icon, items, placeholder }) {
               style={styles.icon}
             />
           )}
-          <AppText style={styles.text}>{placeholder}</AppText>
+          {/* 4.) change this line so that it displays the selected item's label or the placeholder */}
+          <AppText style={styles.text}>
+            {selectedItem ? selectedItem.label : placeholder}
+          </AppText>
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -45,7 +49,11 @@ function AppPicker({ icon, items, placeholder }) {
             renderItem={({ item }) => (
               <PickerItem
                 label={item.label}
-                onPress={() => console.log(item)}
+                // 5.) when an item is pressed, close the modal and call onSelectItem with the selected item
+                onPress={() => {
+                  setModalVisible(false);
+                  onSelectItem(item);
+                }}
               />
             )}
           />

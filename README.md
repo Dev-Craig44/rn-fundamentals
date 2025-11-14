@@ -752,3 +752,7 @@ A user should be able to tap on our category picker to open a modal with a list 
 ### Showing Picker Items
 
 To display the list of categories in a modal, we can use the `Modal` component from React Native. Inside the modal, we can render a `FlatList` to show all available categories. When a user selects a category, we update the selected value and close the modal.
+
+### Handling Selections
+
+When a user selects a category from the modal, we need to handle the selection by updating the state in the parent component. We can achieve this by passing a callback function as a prop to the `AppPicker` component, which will be called with the selected category when an item is tapped.
