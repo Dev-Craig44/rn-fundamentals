@@ -748,3 +748,7 @@ This approach provides a solid foundation for building forms throughout our appl
 Modals are used to display content above an existing screen, often for user input or important information.
 
 A user should be able to tap on our category picker to open a modal with a list of categories to choose from.
+
+### Showing Picker Items
+
+To display the list of categories in a modal, we can use the `Modal` component from React Native. Inside the modal, we can render a `FlatList` to show all available categories. When a user selects a category, we update the selected value and close the modal.
